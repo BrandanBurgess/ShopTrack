@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "101778616595",
+    "firebase_url": "https://shoptrack-193e3-default-rtdb.firebaseio.com",
+    "project_id": "shoptrack-193e3",
+    "storage_bucket": "shoptrack-193e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101778616595:android:c46083466425d87324aae6",
+        "android_client_info": {
+          "package_name": "com.example.shoptrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101778616595-k7s0c8c2erao3f74tpmquaitlr5oh43b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqvhLoJagr1EawRRCERy7tr0KYwnFqpj4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101778616595-k7s0c8c2erao3f74tpmquaitlr5oh43b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
