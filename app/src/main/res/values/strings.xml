@@ -7,4 +7,6 @@
     <string name="click_to_login">Click to login</string>
     <string name="click_to_register">Click to register</string>
     <string name="logout">logout</string>
+    <string name="shopper">Shopper</string>
+    <string name="store_owner">Store Owner</string>
 </resources>

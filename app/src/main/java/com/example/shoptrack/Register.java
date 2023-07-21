@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,15 +21,21 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
     FirebaseAuth  mAuth;
+
+    FirebaseFirestore db;
     ProgressBar progressBar;
 
     TextView textView;
+
+    RadioGroup radioGroup;
 
     @Override
     public void onStart() {
@@ -45,11 +53,13 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.btn_register);
         progressBar = findViewById(R.id.progressBar);
         textView = findViewById(R.id.loginNow);
+        radioGroup = findViewById(R.id.radioGroup);
         textView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -63,6 +73,15 @@ public class Register extends AppCompatActivity {
         buttonReg.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                if (selectedId == -1) {
+                    Toast.makeText(Register.this, "Please select a role", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                RadioButton radioButton = findViewById(selectedId);
+                String userRole = radioButton.getText().toString();
+
                 progressBar.setVisibility(View.VISIBLE);
                 String email,password;
                 email = editTextEmail.getText().toString();
@@ -86,10 +105,9 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    //Log.d(TAG, "createUserWithEmail:success");
-                                    //FirebaseUser user = mAuth.getCurrentUser();
-                                    //updateUI(user);
+                                    User user = new User(email, userRole);
+                                    db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
+
                                     Toast.makeText(Register.this, "Account created",
                                             Toast.LENGTH_SHORT).show();
 

@@ -8,6 +8,29 @@
     android:layout_height="match_parent"
     android:padding="15dp"
     tools:context=".Register">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:id="@+id/radio_shopper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shopper" />
+
+        <RadioButton
+            android:id="@+id/radio_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/store_owner" />
+
+    </RadioGroup>
+
+
     <TextView
         android:text="@string/register"
         android:textSize="25sp"
