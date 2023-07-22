@@ -13,8 +13,10 @@
     <string name="logout">logout</string>
     <string name="shopper">Shopper</string>
     <string name="store_owner">Store Owner</string>
+    <string name="top_brands">Top Brands</string>
+    <string name="search">What are you looking for?</string>
     <string name="privacy_policy">
-        &lt;center&gt;By signing up, you agree to
+        By signing up, you agree to
         our &lt;b&gt;Terms,&lt;/b&gt; &lt;b&gt;Data Policy,&lt;/b&gt;
-        and &lt;b&gt;Cookies Policy&lt;/b&gt;&lt;/center&gt;</string>
+        and &lt;b&gt;Cookies Policy&lt;/b&gt;</string>
 </resources>
