@@ -9,6 +9,7 @@
     tools:context=".Login"
     android:background="@drawable/border">
 
+
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
@@ -21,8 +22,8 @@
         android:layout_height="60dp"
         android:backgroundTint="@color/dark_blue"
         android:fontFamily="@font/poppins_bold"
-        android:text="@string/login"
-        android:textSize="24sp"
+        android:text="@string/signup"
+        android:textSize="22sp"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.459"
@@ -30,19 +31,6 @@
         app:strokeColor="@color/black"
         app:strokeWidth="1px"
         tools:layout_editor_absoluteY="507dp" />
-
-    <TextView
-        android:id="@+id/registerNow"
-        android:layout_width="291dp"
-        android:layout_height="31dp"
-        android:fontFamily="@font/poppins_regular"
-        android:gravity="center"
-        android:text="@string/click_to_register"
-        android:textColor="@color/dark_blue"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/signup_prompt"
-        tools:layout_editor_absoluteX="28dp" />
 
     <ImageView
         android:id="@+id/login_email_rounded_box"
@@ -150,9 +138,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins_regular"
-        android:text="@string/click_to_register_prompt"
+        android:text="@string/privacy_policy"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="90dp"
-        tools:layout_editor_absoluteY="572dp" />
+        tools:layout_editor_absoluteX="64dp"
+        tools:layout_editor_absoluteY="566dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
