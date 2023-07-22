@@ -17,7 +17,8 @@ public class MainActivity extends AppCompatActivity {
 
 
     FirebaseAuth auth;
-    Button button;
+    Button login_btn;
+    Button register_btn;
     TextView textView;
     FirebaseUser user;
 
@@ -27,26 +28,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         auth = FirebaseAuth.getInstance();
-        button = findViewById(R.id.logout);
-        textView = findViewById(R.id.user_details);
+        login_btn = findViewById(R.id.welcome_login_button);
+        register_btn = findViewById(R.id.welcome_register_btn);
+
+        //redirect user to home page if they are already logged in, i.e user != null
+
         user = auth.getCurrentUser();
-        if (user == null){
-            Intent intent = new Intent(getApplicationContext(),Login.class);
+        if(user != null){
+            Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(intent);
             finish();
         }
-        else{
-            textView.setText(user.getEmail());
-        }
-
-        button.setOnClickListener(new View.OnClickListener() {
+        login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(),Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
                 finish();
             }
         });
+        register_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),Register.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
+
     }
 }

@@ -14,40 +14,57 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/login_logo"
+        android:layout_width="212dp"
+        android:layout_height="235dp"
+        android:layout_marginTop="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_no_wm" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/signup_btn_signup"
         android:layout_width="134dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/dark_blue"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/signup"
+        android:textColor="@color/white"
         android:textSize="22sp"
         app:cornerRadius="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/signup_prompt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/black"
-        app:strokeWidth="1px"
-        tools:layout_editor_absoluteY="507dp" />
+        app:strokeWidth="1px" />
 
     <ImageView
         android:id="@+id/login_email_rounded_box"
         android:layout_width="400dp"
         android:layout_height="68dp"
         android:layout_marginTop="48dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_logo"
-        app:srcCompat="@drawable/textbox_outline_drawable"
-        tools:layout_editor_absoluteX="-22dp" />
+        app:srcCompat="@drawable/textbox_outline_drawable" />
 
     <ImageView
         android:id="@+id/login_password_rounded_box"
         android:layout_width="400dp"
         android:layout_height="68dp"
-        app:srcCompat="@drawable/textbox_outline_drawable"
-        tools:layout_editor_absoluteX="-22dp"
-        tools:layout_editor_absoluteY="436dp" />
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_email_rounded_box"
+        app:srcCompat="@drawable/textbox_outline_drawable" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
@@ -77,17 +94,6 @@
         app:layout_constraintStart_toStartOf="@+id/login_email_rounded_box"
         app:layout_constraintTop_toTopOf="@+id/login_email_rounded_box"
         app:layout_constraintVertical_bias="0.437" />
-
-    <ImageView
-        android:id="@+id/login_logo"
-        android:layout_width="212dp"
-        android:layout_height="235dp"
-        android:layout_marginTop="52dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_no_wm" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -135,12 +141,49 @@
 
     <TextView
         android:id="@+id/signup_prompt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="214dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/privacy_policy"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        tools:layout_editor_absoluteX="64dp"
-        tools:layout_editor_absoluteY="566dp" />
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password">
+
+        <RadioButton
+            android:id="@+id/radio_shopper"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/shopper"
+            android:textColor="@color/dark_blue" />
+
+        <RadioButton
+            android:id="@+id/radio_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_light"
+            android:text="@string/store_owner"
+            android:textColor="@color/dark_blue" />
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

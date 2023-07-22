@@ -16,7 +16,7 @@
         android:visibility="gone" />
 
     <Button
-        android:id="@+id/btn_login"
+        android:id="@+id/signup_btn_signup"
         android:layout_width="134dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/dark_blue"

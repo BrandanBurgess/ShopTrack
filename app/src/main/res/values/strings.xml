@@ -1,18 +1,19 @@
 <resources>
     <string name="app_name">ShopTrack</string>
-    <string name="login">Login</string>
+    <string name="login">Log In</string>
     <string name="signup">Sign Up</string>
     <string name="enter_email">Enter Your Email</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="enter_password">Enter Your Password</string>
     <string name="register">Register</string>
-    <string name="click_to_login">Click to login</string>
+    <string name="click_to_login">Click to Log In</string>
     <string name="click_to_register">Sign Up</string>
     <string name="click_to_register_prompt">Don\'t Have an Account?</string>
     <string name="logout">logout</string>
     <string name="shopper">Shopper</string>
     <string name="store_owner">Store Owner</string>
+    <string name="welcome">Welcome to ShopTrack!</string>
     <string name="top_brands">Top Brands</string>
     <string name="search">What are you looking for?</string>
     <string name="privacy_policy">
