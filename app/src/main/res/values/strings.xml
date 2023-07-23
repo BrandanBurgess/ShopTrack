@@ -20,4 +20,10 @@
         By signing up, you agree to
         our &lt;b&gt;Terms,&lt;/b&gt; &lt;b&gt;Data Policy,&lt;/b&gt;
         and &lt;b&gt;Cookies Policy&lt;/b&gt;</string>
+    <string name="navbar_home">Home</string>
+    <string name="navbar_cart">Cart</string>
+    <string name="navbar_account">Account</string>
+    <string name="navbar_settings">Settings</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
