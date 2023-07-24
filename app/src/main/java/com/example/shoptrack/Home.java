@@ -33,6 +33,9 @@ public class Home extends AppCompatActivity {
             else if (item.getItemId() == R.id.nav_account){
                 replaceFragment(new AccountFragment());
             }
+            else if (item.getItemId() == R.id.nav_mystore){
+                replaceFragment(new StoreFragment());
+            }
             else if (item.getItemId() == R.id.nav_settings){
                 replaceFragment(new SettingsFragment());
             }
