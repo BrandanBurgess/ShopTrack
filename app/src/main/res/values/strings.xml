@@ -18,8 +18,8 @@
     <string name="search">What are you looking for?</string>
     <string name="privacy_policy">
         By signing up, you agree to
-        our &lt;b&gt;Terms,&lt;/b&gt; &lt;b&gt;Data Policy,&lt;/b&gt;
-        and &lt;b&gt;Cookies Policy&lt;/b&gt;</string>
+        our Terms, Data Policy,
+        and Cookies Policy</string>
     <string name="navbar_home">Home</string>
     <string name="navbar_cart">Cart</string>
     <string name="navbar_account">Account</string>
