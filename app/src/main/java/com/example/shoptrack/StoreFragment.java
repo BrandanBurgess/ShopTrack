@@ -1,5 +1,6 @@
 package com.example.shoptrack;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,8 @@ public class StoreFragment extends Fragment {
         createStoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Code to create store
+                Intent intent = new Intent(getActivity(), CreateStoreActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -79,4 +81,5 @@ public class StoreFragment extends Fragment {
                     }
                 });
     }
+
 }

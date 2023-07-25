@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".CreateStoreActivity">
+
+    <EditText
+        android:id="@+id/store_title_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/store_title"
+        android:minHeight="48dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/store_description_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Store Description"
+        android:minHeight="48dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"/>
+
+    <Button
+        android:id="@+id/create_store_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/create_store"
+        />
+
+</LinearLayout>
