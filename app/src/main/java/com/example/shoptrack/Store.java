@@ -5,20 +5,26 @@ import java.util.List;
 public class Store {
     private String title;
     private String description;
+    private String imageUrl;
 
+    // Add this constructor
+    public Store(String title, String description, String imageUrl) {
+        this.title = title;
+        this.description = description;
+        this.imageUrl = imageUrl;
+    }
+
+    // Also, don't forget to add a no-argument constructor as it's required by Firebase
     public Store() {
     }
 
-    public Store(String title, String description) {
-        this.title = title;
-        this.description = description;
+    // existing getters and setters ...
+
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public String getDescription() {
-        return description;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

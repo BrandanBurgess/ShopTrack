@@ -16,23 +16,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
-    FirebaseAuth  mAuth;
+    FirebaseAuth mAuth;
 
-    FirebaseFirestore db;
+    DatabaseReference mDatabase;
     ProgressBar progressBar;
 
     TextView textView;
@@ -50,27 +49,20 @@ public class Register extends AppCompatActivity {
             finish();
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
+
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.signup_btn_signup);
         progressBar = findViewById(R.id.progressBar);
-//        textView = findViewById(R.id.loginNow);
         radioGroup = findViewById(R.id.radioGroup);
-//        textView.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                Intent intent = new Intent(getApplicationContext(), Login.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-
 
         buttonReg.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -89,8 +81,6 @@ public class Register extends AppCompatActivity {
                 email = editTextEmail.getText().toString();
                 password = String.valueOf(editTextPassword.getText());
 
-
-
                 if (TextUtils.isEmpty(email)){
                     Toast.makeText(Register.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
@@ -107,38 +97,22 @@ public class Register extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
-                                    User user = new User(email, userRole); // User email and User role(shopper or store owner)
-                                    db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user)
-                                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                                @Override
-                                                public void onSuccess(Void aVoid) {
-                                                    Toast.makeText(Register.this, "Account created",
-                                                            Toast.LENGTH_SHORT).show(); // Check if the data is created.
+                                    User user = new User(email, userRole);
+                                    mDatabase.child(mAuth.getCurrentUser().getUid()).setValue(user);
 
-                                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                                    startActivity(intent); // Get back to login page
-                                                    finish();
-                                                }
-                                            })
-                                            .addOnFailureListener(new OnFailureListener() {
-                                                @Override
-                                                public void onFailure(@NonNull Exception e) {
-                                                    Toast.makeText(Register.this, "Failed to create account: " + e.getMessage(),
-                                                            Toast.LENGTH_SHORT).show();
-                                                }
-                                            });
+                                    Toast.makeText(Register.this, "Account created",
+                                            Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
-                                    // If sign in fails, display a message to the user.
                                     Toast.makeText(Register.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
-
                         });
-
-
             }
-
         });
     }
 }

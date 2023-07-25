@@ -29,4 +29,6 @@
     <string name="navbar_mystore"> MyStore</string>
     <string name="store_title">Store Title</string>
     <string name="create_store">Create Store</string>
+    <string name="store_image">store_image</string>
+    <string name="select_image">select_image</string>
 </resources>
