@@ -22,15 +22,16 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
-    FirebaseAuth  mAuth;
+    FirebaseAuth mAuth;
 
-    FirebaseFirestore db;
+    DatabaseReference mDatabase;
     ProgressBar progressBar;
 
     TextView textView;
@@ -48,27 +49,20 @@ public class Register extends AppCompatActivity {
             finish();
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
         mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
+        mDatabase = FirebaseDatabase.getInstance().getReference("users");
+
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonReg = findViewById(R.id.signup_btn_signup);
         progressBar = findViewById(R.id.progressBar);
-//        textView = findViewById(R.id.loginNow);
         radioGroup = findViewById(R.id.radioGroup);
-//        textView.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                Intent intent = new Intent(getApplicationContext(), Login.class);
-//                startActivity(intent);
-//                finish();
-//            }
-//        });
-
 
         buttonReg.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -87,8 +81,6 @@ public class Register extends AppCompatActivity {
                 email = editTextEmail.getText().toString();
                 password = String.valueOf(editTextPassword.getText());
 
-
-
                 if (TextUtils.isEmpty(email)){
                     Toast.makeText(Register.this, "Enter email", Toast.LENGTH_SHORT).show();
                     return;
@@ -106,7 +98,7 @@ public class Register extends AppCompatActivity {
                                 progressBar.setVisibility(View.GONE);
                                 if (task.isSuccessful()) {
                                     User user = new User(email, userRole);
-                                    db.collection("users").document(mAuth.getCurrentUser().getUid()).set(user);
+                                    mDatabase.child(mAuth.getCurrentUser().getUid()).setValue(user);
 
                                     Toast.makeText(Register.this, "Account created",
                                             Toast.LENGTH_SHORT).show();
@@ -115,18 +107,12 @@ public class Register extends AppCompatActivity {
                                     startActivity(intent);
                                     finish();
                                 } else {
-                                    // If sign in fails, display a message to the user.
-                                    //Log.w(TAG, "createUserWithEmail:failure", task.getException());
                                     Toast.makeText(Register.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
-                                    //updateUI(null);
                                 }
                             }
                         });
-
-
             }
-
         });
     }
 }

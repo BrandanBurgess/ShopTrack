@@ -18,12 +18,17 @@
     <string name="search">What are you looking for?</string>
     <string name="privacy_policy">
         By signing up, you agree to
-        our &lt;b&gt;Terms,&lt;/b&gt; &lt;b&gt;Data Policy,&lt;/b&gt;
-        and &lt;b&gt;Cookies Policy&lt;/b&gt;</string>
+        our Terms, Data Policy,
+        and Cookies Policy</string>
     <string name="navbar_home">Home</string>
     <string name="navbar_cart">Cart</string>
     <string name="navbar_account">Account</string>
     <string name="navbar_settings">Settings</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="navbar_mystore"> MyStore</string>
+    <string name="store_title">Store Title</string>
+    <string name="create_store">Create Store</string>
+    <string name="store_image">store_image</string>
+    <string name="select_image">select_image</string>
 </resources>

@@ -4,9 +4,10 @@ public class User {
     private String email;
     private String role;
 
+    //add an id field here.
+
     public User() {
     }
-
     public User(String email, String role) {
         this.email = email;
         this.role = role;
