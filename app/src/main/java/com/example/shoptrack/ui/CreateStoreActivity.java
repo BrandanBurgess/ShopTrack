@@ -1,4 +1,4 @@
-package com.example.shoptrack;
+package com.example.shoptrack.ui;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.shoptrack.R;
+import com.example.shoptrack.data.Store;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;

@@ -1,4 +1,4 @@
-package com.example.shoptrack;
+package com.example.shoptrack.managers;
 
 import android.accounts.Account;
 

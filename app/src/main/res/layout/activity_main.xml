@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/border"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <Button
         android:id="@+id/welcome_register_btn"

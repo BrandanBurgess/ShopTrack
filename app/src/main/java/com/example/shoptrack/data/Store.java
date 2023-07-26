@@ -1,4 +1,4 @@
-package com.example.shoptrack;
+package com.example.shoptrack.data;
 
 import java.util.List;
 
