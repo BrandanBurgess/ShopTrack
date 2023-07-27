@@ -1,9 +1,11 @@
-package com.example.shoptrack;
+package com.example.shoptrack.data;
 
-import android.accounts.Account;
+import com.example.shoptrack.managers.AccountManager;
+import com.example.shoptrack.managers.OrderManager;
+import com.example.shoptrack.managers.ProductManager;
 
 public abstract class StoreOwner extends User implements AccountManager, OrderManager,
-        ProductManager{
+        ProductManager {
 
     public StoreOwner(String email, String role) {
         super(email, role);

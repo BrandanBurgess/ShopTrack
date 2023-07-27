@@ -7,7 +7,7 @@
     android:background="@drawable/border"
     android:orientation="vertical"
     android:padding="15dp"
-    tools:context=".Login">
+    tools:context=".ui.Login">
 
 
     <FrameLayout

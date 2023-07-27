@@ -1,4 +1,4 @@
-package com.example.shoptrack;
+package com.example.shoptrack.data;
 
 public class User {
     private String email;

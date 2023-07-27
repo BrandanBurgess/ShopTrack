@@ -1,4 +1,6 @@
-package com.example.shoptrack;
+package com.example.shoptrack.managers;
+
+import com.example.shoptrack.data.Order;
 
 public interface OrderManager {
     void addOrder(Order order);

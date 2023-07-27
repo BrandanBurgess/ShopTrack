@@ -1,4 +1,4 @@
-package com.example.shoptrack;
+package com.example.shoptrack.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.shoptrack.R;
+import com.example.shoptrack.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 /**

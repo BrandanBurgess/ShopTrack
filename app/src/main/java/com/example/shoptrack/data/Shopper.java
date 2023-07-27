@@ -1,8 +1,11 @@
-package com.example.shoptrack;
+package com.example.shoptrack.data;
 
 import android.accounts.Account;
 
-public class Shopper extends User implements AccountManager, OrderManager{
+import com.example.shoptrack.managers.AccountManager;
+import com.example.shoptrack.managers.OrderManager;
+
+public class Shopper extends User implements AccountManager, OrderManager {
 
 //    public final String id; dont need rn
 
