@@ -46,4 +46,5 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
     implementation("com.google.firebase:firebase-database")
     implementation("com.google.firebase:firebase-storage")
+    implementation group: 'io.vavr', name: 'vavr', version: '1.0.0-alpha-4'
 }
