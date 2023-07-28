@@ -24,7 +24,6 @@
         android:layout_height="235dp"
         android:layout_marginTop="52dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/logo_no_wm" />
@@ -41,73 +40,69 @@
         app:cornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/signup_prompt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="@color/black"
         app:strokeWidth="1px" />
 
     <ImageView
         android:id="@+id/login_email_rounded_box"
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="68dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_logo"
         app:srcCompat="@drawable/textbox_outline_drawable" />
 
     <ImageView
         android:id="@+id/login_password_rounded_box"
-        android:layout_width="400dp"
+        android:layout_width="wrap_content"
         android:layout_height="68dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_email_rounded_box"
         app:srcCompat="@drawable/textbox_outline_drawable" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
         android:layout_width="200dp"
-        android:layout_height="49dp"
+        android:layout_height="50dp"
         android:fontFamily="@font/poppins_light"
         android:hint="@string/enter_password"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/login_password_rounded_box"
         app:layout_constraintEnd_toEndOf="@+id/login_password_rounded_box"
-        app:layout_constraintHorizontal_bias="0.414"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/login_password_rounded_box"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintStart_toEndOf="@+id/login_password_rounded_box"
+        app:layout_constraintStart_toStartOf="@id/login_password_rounded_box"
+        app:layout_constraintTop_toTopOf="@+id/login_password_rounded_box" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/email"
-        android:layout_width="220dp"
-        android:layout_height="52dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
         android:fontFamily="@font/poppins_light"
         android:hint="@string/enter_email"
         android:singleLine="true"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@+id/login_email_rounded_box"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.572"
+        app:layout_constraintEnd_toEndOf="@+id/login_email_rounded_box"
         app:layout_constraintStart_toStartOf="@+id/login_email_rounded_box"
-        app:layout_constraintTop_toTopOf="@+id/login_email_rounded_box"
-        app:layout_constraintVertical_bias="0.437" />
+        app:layout_constraintTop_toTopOf="@+id/login_email_rounded_box" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="61dp" />
+        app:layout_constraintGuide_percent=".2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="289dp" />
+        app:layout_constraintGuide_percent=".8" />
 
     <TextView
         android:id="@+id/login_email_prompt"
@@ -143,15 +138,14 @@
         android:id="@+id/signup_prompt"
         android:layout_width="214dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="16dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/privacy_policy"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="10sp"
+        android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
@@ -185,5 +179,12 @@
             android:textColor="@color/dark_blue" />
 
     </RadioGroup>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
