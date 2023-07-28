@@ -1,24 +1,20 @@
-package com.example.shoptrack;
+package com.example.shoptrack.data;
 
 import java.util.List;
 
 public class Store {
-    private String title;
-    private String description;
-
+    public String title;
+    public String description;
+    public String imageUrl;
 
     // Add this constructor
-    public Store(String title, String description) {
+    public Store(String title, String description, String imageUrl) {
         this.title = title;
         this.description = description;
-
+        this.imageUrl = imageUrl;
     }
 
     // Also, don't forget to add a no-argument constructor as it's required by Firebase
     public Store() {
     }
-
-    // existing getters and setters ...
-
-
 }

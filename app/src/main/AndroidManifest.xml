@@ -14,24 +14,27 @@
         android:theme="@style/Theme.Material3.Light"
         tools:targetApi="31">
         <activity
-            android:name=".Register"
+            android:name=".ui.Register"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".ui.Login"
             android:theme="@style/Theme.Material3.Light.NoActionBar"
+            android:exported="true" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.Home"
             android:exported="true" />
-        <activity android:name=".Home" />
-        <activity android:name=".CreateStoreActivity" />
+        <activity
+            android:name=".ui.CreateStoreActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

@@ -1,4 +1,7 @@
-package com.example.shoptrack;
+package com.example.shoptrack.managers;
+
+import com.example.shoptrack.data.Product;
+import com.example.shoptrack.ui.StoreFragment;
 
 public interface ProductManager {
     void addProduct(StoreFragment store, Product product);
