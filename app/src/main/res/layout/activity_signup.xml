@@ -32,6 +32,7 @@
         android:id="@+id/signup_btn_signup"
         android:layout_width="134dp"
         android:layout_height="60dp"
+        android:layout_marginTop="22dp"
         android:backgroundTint="@color/dark_blue"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/signup"
@@ -41,6 +42,7 @@
         app:layout_constraintBottom_toTopOf="@+id/signup_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
         app:strokeColor="@color/black"
         app:strokeWidth="1px" />
 
@@ -49,6 +51,8 @@
         android:layout_width="wrap_content"
         android:layout_height="68dp"
         android:layout_marginTop="48dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@id/login_password_rounded_box"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_logo"
@@ -136,8 +140,9 @@
 
     <TextView
         android:id="@+id/signup_prompt"
-        android:layout_width="214dp"
-        android:layout_height="60dp"
+        android:layout_width="190dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="1dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/privacy_policy"
         android:textAlignment="center"
@@ -145,8 +150,8 @@
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_btn_signup" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
