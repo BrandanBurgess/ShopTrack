@@ -30,6 +30,18 @@
             android:paddingTop="4dp"
             android:paddingBottom="4dp"/>
 
+        <ImageView
+            android:id="@+id/store_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop" />
+
+        <Button
+            android:id="@+id/add_image_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Image" />
+
         <Button
             android:id="@+id/create_store_button"
             android:layout_width="match_parent"

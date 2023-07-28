@@ -31,4 +31,6 @@
     <string name="create_store">Create Store</string>
     <string name="store_image">store_image</string>
     <string name="select_image">select_image</string>
+    <string name="create_product">Create Product</string>
+    <string name="edit_product">Edit Product</string>
 </resources>
