@@ -21,7 +21,6 @@
         android:id="@+id/signup_btn_signup"
         android:layout_width="134dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="12dp"
         android:backgroundTint="@color/dark_blue"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/login"
@@ -30,6 +29,7 @@
         app:layout_constraintBottom_toTopOf="@+id/signup_prompt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_password_rounded_box"
         app:strokeColor="@color/black"
         app:strokeWidth="1px" />
 
@@ -37,23 +37,24 @@
         android:id="@+id/registerNow"
         android:layout_width="291dp"
         android:layout_height="31dp"
-        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_regular"
         android:gravity="center"
         android:text="@string/click_to_register"
         android:textColor="@color/dark_blue"
         android:textSize="14sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signup_prompt" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_prompt"
+        app:layout_constraintVertical_bias="0.32" />
 
     <ImageView
         android:id="@+id/login_email_rounded_box"
-        android:contentDescription="@string/loginEmailBoxDescription"
         android:layout_width="wrap_content"
         android:layout_height="68dp"
         android:layout_marginTop="48dp"
+        android:contentDescription="@string/loginEmailBoxDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/home_logo"
@@ -61,12 +62,15 @@
 
     <ImageView
         android:id="@+id/login_password_rounded_box"
-        android:contentDescription="@string/loginPasswordBoxDescription"
         android:layout_width="wrap_content"
         android:layout_height="68dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/loginPasswordBoxDescription"
         app:layout_constraintBottom_toTopOf="@+id/signup_btn_signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_email_rounded_box"
         app:srcCompat="@drawable/textbox_outline_drawable" />
 
     <com.google.android.material.textfield.TextInputEditText
@@ -129,7 +133,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/login_email_rounded_box"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias=".0"
         app:layout_constraintStart_toStartOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/home_logo"
         app:layout_constraintVertical_bias="1.0" />
@@ -153,13 +157,15 @@
         android:id="@+id/signup_prompt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
         android:layout_marginBottom="84dp"
         android:fontFamily="@font/poppins_regular"
         android:text="@string/click_to_register_prompt"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_btn_signup" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
