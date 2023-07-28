@@ -26,14 +26,9 @@ import com.google.firebase.storage.UploadTask;
 
 public class CreateStoreActivity extends AppCompatActivity {
 
-    private static final int PICK_IMAGE_REQUEST = 1;
-
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
-    private StorageReference mStorageRef;
     private EditText titleInput, descriptionInput;
-    private ImageView storeImageView;
-    private Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,13 +37,10 @@ public class CreateStoreActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
-        mStorageRef = FirebaseStorage.getInstance().getReference();
 
         titleInput = findViewById(R.id.store_title_input);
         descriptionInput = findViewById(R.id.store_description_input);
-        storeImageView = findViewById(R.id.store_image_view);
         Button createStoreButton = findViewById(R.id.create_store_button);
-        Button chooseImageButton = findViewById(R.id.choose_image_button);
 
         createStoreButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,67 +48,19 @@ public class CreateStoreActivity extends AppCompatActivity {
                 String title = titleInput.getText().toString();
                 String description = descriptionInput.getText().toString();
 
-                if (TextUtils.isEmpty(title) || TextUtils.isEmpty(description) || imageUri == null) {
-                    Toast.makeText(CreateStoreActivity.this, "Please fill all the fields and choose an image", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(title) || TextUtils.isEmpty(description)) {
+                    Toast.makeText(CreateStoreActivity.this, "Please fill all the fields", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                uploadImageAndCreateStore(title, description);
-            }
-        });
-
-        chooseImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openFileChooser();
+                createStore(title, description);
             }
         });
     }
 
-    private void openFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent, PICK_IMAGE_REQUEST);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            imageUri = data.getData();
-            storeImageView.setImageURI(imageUri);
-        }
-    }
-
-    private void uploadImageAndCreateStore(final String title, final String description) {
-        final StorageReference fileReference = mStorageRef.child("stores/" + mAuth.getCurrentUser().getUid() + "/" + System.currentTimeMillis() + ".jpg");
-
-        fileReference.putFile(imageUri).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-            @Override
-            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                if (!task.isSuccessful()) {
-                    throw task.getException();
-                }
-                return fileReference.getDownloadUrl();
-            }
-        }).addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                createStore(title, description, uri.toString());
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(CreateStoreActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private void createStore(String title, String description, String imageUrl) {
+    private void createStore(String title, String description) {
         String ownerId = mAuth.getCurrentUser().getUid();
-        Store store = new Store(title, description, imageUrl);
+        Store store = new Store(title, description);  // Pass an empty string for imageUrl as no image is uploaded
 
         mDatabase.child("stores").child(ownerId)
                 .setValue(store)
