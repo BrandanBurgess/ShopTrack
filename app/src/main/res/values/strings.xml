@@ -33,4 +33,9 @@
     <string name="select_image">select_image</string>
     <string name="create_product">Create Product</string>
     <string name="edit_product">Edit Product</string>
+    <string name="product_name">product_name</string>
+    <string name="product_price">product_price</string>
+    <string name="product_description">product_description</string>
+    <string name="product_image_url">product_image_url</string>
+    <string name="add_image">add_image</string>
 </resources>
