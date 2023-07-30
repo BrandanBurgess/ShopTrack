@@ -11,10 +11,14 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, double price, int quantity, String image, String description, String category, String id) {
+    public Product(String name, double price, String image, String description) {
         this.name = name;
         this.price = price;
         this.image = image;
         this.description = description;
+    }
+
+    public String getName() {
+        return name;
     }
 }
