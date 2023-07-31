@@ -1,44 +1,62 @@
+<!-- item_order.xml -->
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/border2"
-    android:orientation="horizontal"
-    android:padding="8dp">
+    android:layout_margin="8dp"
+    android:background="@drawable/border"
+    android:background_tint="@drawable/border"
+    android:elevation="4dp">
 
-    <ImageView
-        android:id="@+id/itemImageView"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="Item Image"
-        android:src="@drawable/default_item_icon" />
-
-    <TextView
-        android:id="@+id/itemNameTextView"
-        android:layout_width="0dp"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:fontFamily="@font/poppins_bold"
-        android:text="Item Name"
-        android:textColor="@color/dark_blue"
-        android:textSize="16sp" />
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/itemQuantityTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="x0"
-        android:textColor="@color/dark_blue"
-        android:textSize="16sp" />
+        <!-- Place your views here for each item in the cart -->
+        <TextView
+            android:id="@+id/productNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/itemPriceTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="$0.00"
-        android:textColor="@color/dark_blue"
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/productPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:text="$0.00"
+            android:textSize="14sp" />
 
-</LinearLayout>
+        <!-- + button -->
+        <ImageButton
+            android:id="@+id/increaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_add" />
+
+        <!-- - button -->
+        <ImageButton
+            android:id="@+id/decreaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:layout_toStartOf="@id/increaseButton"
+            android:src="@drawable/ic_remove" />
+
+        <!-- Delete button -->
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:layout_toStartOf="@id/decreaseButton"
+            android:src="@drawable/ic_delete" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
