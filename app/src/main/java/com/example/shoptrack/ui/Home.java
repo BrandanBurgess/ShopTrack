@@ -20,6 +20,7 @@ public class Home extends AppCompatActivity {
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
+        getSupportActionBar().hide();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
