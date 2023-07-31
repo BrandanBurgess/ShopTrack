@@ -2,6 +2,7 @@ package com.example.shoptrack.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -33,10 +34,10 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void onViewCreated (@NonNull View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        mbase = FirebaseDatabase.getInstance().getReference();
+        mbase = FirebaseDatabase.getInstance().getReference().child("stores");
 
         recyclerView = getView().findViewById(R.id.store_recycler_view);
 
@@ -48,6 +49,8 @@ public class HomeFragment extends Fragment {
                         .build();
 
         adapter = new StoreAdapter(options);
+
+        recyclerView.setAdapter(adapter);
     }
 
     @Override
