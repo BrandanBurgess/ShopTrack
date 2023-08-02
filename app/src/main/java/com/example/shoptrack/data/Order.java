@@ -1,50 +1,68 @@
 package com.example.shoptrack.data;
-import java.util.ArrayList;
-import java.util.HashMap;
 
-public class Order {
-    public HashMap<Order, String> orderToCustomer;
-    public HashMap<Store, Product> storeToProduct;
-    public boolean isComplete;
+import android.os.Build;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
+
+import java.util.ArrayList;
+
+public class Order implements Parcelable {
+    private double total;
+    private ArrayList<Product> products = new ArrayList<Product>();
+    private String createdAt;
+    private boolean isCompleted;
+    private String id;
+    private String storeId;
+    private String customerId;
+    private String customerName;
 
     public Order() {
-        orderToCustomer = new HashMap<>();
-        storeToProduct = new HashMap<>();
-        isComplete = false;
     }
 
-    /**
-     * Adds an item to the Hashmap, storeToProduct.
-     *
-     * @param store the store to add
-     * @param product the product to add
-     */
-    public void addItem(Store store, Product product) {
-        storeToProduct.put(store, product);
+    // For parsing orders (Everything, EXCEPT the Products) //
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    protected Order(Parcel in) {
+        total = in.readDouble();
+        createdAt = in.readString();
+        isCompleted = in.readBoolean();
+        id = in.readString();
+        storeId = in.readString();
+        customerId = in.readString();
+        customerName = in.readString();
+
     }
 
-    /**
-     * Removes an item from the Hashmap, storeToProduct.
-     *
-     * @param store the store to remove (along with the product)
-     */
-    public void removeItem(Store store) {
-        storeToProduct.remove(store);
+    // Don't care about what this function does. Just needs to be there to satisfy the ParcelInterface //
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
-    /**
-     * Checks if an order is complete.
-     *
-     * @return a boolean corresponding to the status of the order
-     */
-    public boolean isComplete() {
-        return isComplete;
+    public static final Parcelable.Creator<Order> CREATOR = new Parcelable.Creator<Order>() {
+        @RequiresApi(api = Build.VERSION_CODES.Q)
+        @Override
+        public Order createFromParcel(Parcel in) {
+            return new Order(in);
+        }
+
+        @Override
+        public Order[] newArray(int size) {
+            return new Order[size];
+        }
+    };
+
+    @RequiresApi(api = Build.VERSION_CODES.Q)
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeDouble(total);
+        dest.writeString(createdAt);
+        dest.writeBoolean(isCompleted);
+        dest.writeString(id);
+        dest.writeString(storeId);
+        dest.writeString(customerId);
+        dest.writeString(customerName);
     }
 
-    /**
-     * Marks an order as complete.
-     */
-    public void markComplete() {
-        isComplete = true;
-    }
 }
