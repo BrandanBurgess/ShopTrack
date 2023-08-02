@@ -21,6 +21,33 @@ public class Order implements Parcelable {
     public Order() {
     }
 
+    public Order(double total, ArrayList<Product> products, String customerId, String storeId, String createdAt, boolean isCompleted, String id, String customerName) {
+        this.total = total;
+        this.products = products;
+        this.customerId = customerId;
+        this.storeId = storeId;
+        this.createdAt = createdAt;
+        this.isCompleted = isCompleted;
+        this.id = id;
+        this.customerName = customerName;
+    }
+
+    // Getters //
+    public double getTotal() { return total; }
+    public ArrayList<Product> getProducts() { return products; }
+    public String getCreatedAt() { return createdAt; }
+    public boolean getIsCompleted() { return isCompleted; }
+    public String getId() { return id; }
+    public String getStoreId() { return storeId; }
+    public String getCustomerId() { return customerId; }
+    public String getCustomerName() { return customerName; }
+
+    // Setters //
+    public void setTotal(double total) { this.total = total; }
+    public void setItems(ArrayList<Product> products) { this.products = products; }
+    public void setIsCompleted(boolean isCompleted) { this.isCompleted = isCompleted; }
+    public void setId(String id) { this.id = id; }
+
     // For parsing orders (Everything, EXCEPT the Products) //
     @RequiresApi(api = Build.VERSION_CODES.Q)
     protected Order(Parcel in) {
