@@ -44,10 +44,11 @@ public class StoreProductAdapter extends FirebaseRecyclerAdapter <Product, Store
         ImageView shopper_store_view_store_logo; // change this to product image.
         public storeProductViewholder(@NonNull View itemView){
             super(itemView);
-            shopper_store_store_name = itemView.findViewById(R.id.shopper_store_store_name);
-            shopper_store_view_store_logo = itemView.findViewById(R.id.shopper_store_view_store_logo);
+            shopper_store_store_name = itemView.findViewById(R.id.shopper_store_name);
+            shopper_store_view_store_logo = itemView.findViewById(R.id.shopper_store_logo);
 
         }
+
 
 
     }

@@ -5,6 +5,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoptrack.R;
@@ -13,20 +16,29 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-public class StoreAdapter extends FirebaseRecyclerAdapter<Store, StoreAdapter.storeViewholder> {
-    public final onItemClickListener listener;
+public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.storeViewholder>{
 
-    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options, onItemClickListener listener) {
+    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options) {
         super(options);
-        this.listener = listener;
     }
 
-
     @Override
+
     protected void onBindViewHolder(@NonNull storeViewholder holder, int position, @NonNull Store model){
         holder.store_name.setText(model.title);
         holder.store_description.setText(model.description);
         Picasso.get().load(model.imageUrl).into(holder.store_image);
+
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String store_id = getRef(position).getKey();
+                Fragment fragment = ShopperStoreViewFragment.newInstance(store_id);
+                ((ShopperStoreViewFragment) fragment).replaceFragment(fragment);
+            }
+        });
 
     }
 
@@ -40,32 +52,17 @@ public class StoreAdapter extends FirebaseRecyclerAdapter<Store, StoreAdapter.st
         return new StoreAdapter.storeViewholder(view);
     }
 
-
-    class storeViewholder extends RecyclerView.ViewHolder {
+    class storeViewholder extends RecyclerView.ViewHolder{
         TextView store_name, store_description;
         ImageView store_image;
-
-        public storeViewholder(@NonNull View itemView) {
+        public storeViewholder(@NonNull View itemView){
             super(itemView);
             store_name = itemView.findViewById(R.id.store_name);
             store_description = itemView.findViewById(R.id.store_description);
             store_image = itemView.findViewById(R.id.store_image);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION && listener != null) {
-                        listener.onItemClick(position);
-                    }
-                }
-            });
+
         }
-
-
     }
-    // make a click listener interface
-    public interface onItemClickListener{
-        void onItemClick(int position);
-    }
+
 
 }
