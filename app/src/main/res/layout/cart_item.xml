@@ -42,36 +42,34 @@
             android:textSize="14sp" />
 
         <!-- + button -->
-        <ImageButton
-            android:id="@+id/increaseButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_below="@id/productPriceTextView"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="8sp"
-            android:src="@drawable/add"
-            />
 
         <!-- - button -->
-        <ImageButton
-            android:id="@+id/decreaseButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_below="@id/productPriceTextView"
-            android:layout_toStartOf="@id/increaseButton"
-            android:layout_marginTop="8sp"
-            android:src="@drawable/add"
-            />
 
         <!-- Delete button -->
+
         <ImageButton
-            android:id="@+id/deleteButton"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:id="@+id/increaseButton"
+            android:layout_width="59dp"
+            android:layout_height="34dp"
             android:layout_below="@id/productPriceTextView"
-            android:layout_marginTop="8sp"
-            android:src="@drawable/remove"
-            />
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-1dp"
+            android:layout_marginEnd="25dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add" />
+
+        <ImageButton
+            android:id="@+id/decreaseButton"
+            android:layout_width="76dp"
+            android:layout_height="28dp"
+            android:layout_below="@id/productPriceTextView"
+            android:layout_marginStart="98dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="34dp"
+            android:layout_toEndOf="@+id/productQuantityTextView"
+            android:scaleType="fitCenter"
+            android:src="@drawable/add" />
+
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
