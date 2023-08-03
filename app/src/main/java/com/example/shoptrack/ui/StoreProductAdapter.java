@@ -23,6 +23,7 @@ public class StoreProductAdapter extends FirebaseRecyclerAdapter <Product, Store
 
     @Override
     protected void onBindViewHolder(@NonNull storeProductViewholder holder, int position, @NonNull Product model){
+        //fix this
         holder.shopper_store_store_name.setText(model.name);
         Picasso.get().load(model.imageUrl).into(holder.shopper_store_view_store_logo);
 
