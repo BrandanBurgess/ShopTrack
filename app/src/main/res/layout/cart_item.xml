@@ -1,20 +1,18 @@
-<!-- item_order.xml -->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
+    android:layout_margin="8sp"
     android:background="@drawable/border"
-    android:background_tint="@drawable/border"
-    android:elevation="4dp">
+    android:elevation="4sp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:padding="16sp">
 
-        <!-- Place your views here for each item in the cart -->
+        <!-- Product Name TextView -->
         <TextView
             android:id="@+id/productNameTextView"
             android:layout_width="wrap_content"
@@ -23,40 +21,57 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- Product Price TextView -->
         <TextView
             android:id="@+id/productPriceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/productNameTextView"
+            android:layout_marginTop="8sp"
             android:text="$0.00"
+            android:textSize="14sp" />
+
+        <!-- Product Quantity TextView -->
+        <TextView
+            android:id="@+id/productQuantityTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productPriceTextView"
+            android:layout_marginTop="8sp"
+            android:text="Quantity: 0"
             android:textSize="14sp" />
 
         <!-- + button -->
         <ImageButton
             android:id="@+id/increaseButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/productNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/productPriceTextView"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_add" />
+            android:layout_marginTop="8sp"
+            android:src="@drawable/add"
+            />
 
         <!-- - button -->
         <ImageButton
             android:id="@+id/decreaseButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/productNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/productPriceTextView"
             android:layout_toStartOf="@id/increaseButton"
-            android:src="@drawable/ic_remove" />
+            android:layout_marginTop="8sp"
+            android:src="@drawable/add"
+            />
 
         <!-- Delete button -->
         <ImageButton
             android:id="@+id/deleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/productNameTextView"
-            android:layout_toStartOf="@id/decreaseButton"
-            android:src="@drawable/ic_delete" />
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_below="@id/productPriceTextView"
+            android:layout_marginTop="8sp"
+            android:src="@drawable/remove"
+            />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
