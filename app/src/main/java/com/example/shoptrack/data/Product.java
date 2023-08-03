@@ -1,20 +1,62 @@
 package com.example.shoptrack.data;
-
-import android.media.Image;
-
 public class Product {
+
     public String name;
-    public double price;
-    public String image;
+    public Double price;
     public String description;
+    public String imageUrl;
+    public String ownerId;
 
     public Product() {
     }
 
-    public Product(String name, double price, int quantity, String image, String description, String category, String id) {
+    public Product(String name, Double price, String description, String imageUrl, String ownerId) {
         this.name = name;
         this.price = price;
-        this.image = image;
         this.description = description;
+        this.imageUrl = imageUrl;
+        this.ownerId = ownerId;
+    }
+
+    // getters
+    public String getName() {
+        return name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    // setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public void setOwnerId(String ownerId) {
+        this.ownerId = ownerId;
     }
 }

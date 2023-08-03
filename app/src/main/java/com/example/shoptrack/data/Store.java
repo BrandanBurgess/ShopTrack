@@ -17,4 +17,16 @@ public class Store {
     // Also, don't forget to add a no-argument constructor as it's required by Firebase
     public Store() {
     }
+
+    public String getTitle() {
+        return this.title;
+    }
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public String getImageUrl() {
+        return this.imageUrl;
+    }
 }

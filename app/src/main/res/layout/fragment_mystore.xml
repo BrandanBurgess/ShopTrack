@@ -27,5 +27,30 @@
         android:layout_below="@+id/btn_create_store"
         android:layout_centerHorizontal="true"
         android:visibility="gone"/>
+    <TextView
+        android:id="@+id/store_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:text="Store Title"/>
+
+    <!-- Add this TextView for displaying store description -->
+    <TextView
+        android:id="@+id/store_description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:text="Store Description"/>
+
+    <!-- Add this ImageView for displaying store image -->
+    <ImageView
+        android:id="@+id/store_image_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:padding="10dp"
+        android:contentDescription="@string/store_image"/>
 
 </RelativeLayout>
