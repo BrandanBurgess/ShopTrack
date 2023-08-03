@@ -8,9 +8,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -66,4 +71,22 @@ public class HomeFragment extends Fragment {
     }
 
 
+    //implement the interface method
+//    @Override
+//    public void onItemClick(int position) {
+//        Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_SHORT).show();
+//        //get the store id
+//        String store_id = adapter.getRef(position).getKey();
+//        //create a new instance of the fragment
+//        ShopperStoreViewFragment shopperStoreViewFragment = ShopperStoreViewFragment.newInstance(store_id);
+//        //replace the current fragment with the new fragment
+//        replaceFragment(shopperStoreViewFragment);
+//    }
+
+//    private void replaceFragment(Fragment fragment){
+//        FragmentManager fragmentManager = getParentFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.home_frame_layout, fragment);
+//        fragmentTransaction.commit();
+//    }
 }
