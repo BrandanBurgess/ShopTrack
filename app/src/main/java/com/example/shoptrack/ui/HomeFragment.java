@@ -17,7 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Store;
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements StoreAdapter.onItemClickListener {
 
     public RecyclerView recyclerView;
     StoreAdapter adapter;
@@ -66,4 +66,22 @@ public class HomeFragment extends Fragment {
     }
 
 
+    @Override
+    public void onItemClick(int position) {
+        //retrieve store id from database
+        String storeId = adapter.getRef(position).getKey();
+        //create bundle to pass store id to next fragment
+        Bundle bundle = new Bundle();
+        bundle.putString("storeId", storeId);
+        //create new ShopperStoreViewFragment and pass bundle
+        ShopperStoreViewFragment shopperStoreViewFragment = new ShopperStoreViewFragment();
+        shopperStoreViewFragment.setArguments(bundle);
+        //navigate to new fragment
+        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.home_frame_layout, shopperStoreViewFragment).commit();
+
+
+
+
+
+    }
 }

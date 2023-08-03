@@ -51,4 +51,8 @@ public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.s
 
     }
 
+    public interface onItemClickListener{
+        void onItemClick(int position);
+    }
+
 }
