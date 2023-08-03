@@ -23,6 +23,10 @@ public class Cart implements Parcelable {
         return instance;
     }
 
+    public void makeEqual(Cart cart) {
+        sCart = cart.getsCart();
+    }
+
     public void addOrderItem(OrderItem orderItem) {
         sCart.add(orderItem);
     }

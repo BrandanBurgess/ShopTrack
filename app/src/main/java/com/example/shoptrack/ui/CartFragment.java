@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Cart;
@@ -27,6 +29,11 @@ public class CartFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public void updateTextView(String toThis, View v) {
+        TextView textView = (TextView) v;
+        textView.setText(toThis);
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -40,24 +47,37 @@ public class CartFragment extends Fragment {
         // Create an instance of the CartAdapter with the order items from the Cart
         cart = Cart.getInstance(); // Assuming Cart is implemented as a singleton
         List<OrderItem> orderItemList = cart.getsCart();
-        cartAdapter = new CartAdapter(orderItemList);
+        cartAdapter = new CartAdapter(orderItemList, cart); // Pass the cart reference here
 
         // Set the CartAdapter to the RecyclerView
         cartRecyclerView.setAdapter(cartAdapter);
 
-        cartRecyclerView.setAdapter(cartAdapter);
+
+        View clearButton = view.findViewById(R.id.delete_cart);
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Clear the Cart
+                cart.clearCart();
+                cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
+            }
+        });
+
 
         View addButton = view.findViewById(R.id.button);
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Add a new OrderItem with product, quantity 0, and storeID = 1 to the Cart
-                Product newProduct = new Product("New Product", 0.0, "yo", "1", "2");
+                Product newProduct = new Product("New Product", 5.0, "yo", "1", "2");
                 OrderItem newOrderItem = new OrderItem(newProduct, 0, "1");
                 cart.addOrderItem(newOrderItem);
                 cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
             }
         });
+
+
 
         return view;
     }

@@ -4,6 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+
     <Button
         android:id="@+id/delete_cart"
         android:layout_width="wrap_content"
@@ -69,12 +71,12 @@
         android:layout_marginTop="112dp" />
 
     <TextView
-        android:id="@+id/totalAmountTextView"
-        android:layout_width="match_parent"
+        android:id="@+id/totalTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cartRecyclerView"
         android:padding="16dp"
-        android:text="Total: $0.00"
+        android:text="@string/total"
         android:textColor="@color/dark_blue"
         android:textColorLink="@color/dark_blue"
         android:textSize="18sp"
@@ -100,6 +102,6 @@
         android:layout_marginStart="127dp"
         android:layout_marginEnd="128dp"
         android:layout_marginBottom="51dp"
-        android:text="Button" />
+        android:text="@string/test" />
 
 </RelativeLayout>
