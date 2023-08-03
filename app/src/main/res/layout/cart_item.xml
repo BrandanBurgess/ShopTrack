@@ -1,4 +1,4 @@
-
+<!-- item_order.xml -->
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/productNameTextView"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/" />
+            android:src="@drawable/ic_add" />
 
         <!-- - button -->
         <ImageButton
