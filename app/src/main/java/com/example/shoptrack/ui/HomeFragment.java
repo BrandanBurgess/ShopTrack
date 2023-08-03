@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment implements StoreAdapter.onItemClickLi
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+
     @Override
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -53,10 +54,12 @@ public class HomeFragment extends Fragment implements StoreAdapter.onItemClickLi
                         .setQuery(mbase, Store.class)
                         .build();
 
-        adapter = new StoreAdapter(options);
+        adapter = new StoreAdapter(options, this); // Pass 'this' as the listener
 
         recyclerView.setAdapter(adapter);
     }
+
+
 
     @Override
     public void onStart(){

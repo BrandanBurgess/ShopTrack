@@ -13,14 +13,16 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.storeViewholder> {
+public class StoreAdapter extends FirebaseRecyclerAdapter<Store, StoreAdapter.storeViewholder> {
+    public final onItemClickListener listener;
 
-    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options) {
+    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options, onItemClickListener listener) {
         super(options);
+        this.listener = listener;
     }
 
-    @Override
 
+    @Override
     protected void onBindViewHolder(@NonNull storeViewholder holder, int position, @NonNull Store model){
         holder.store_name.setText(model.title);
         holder.store_description.setText(model.description);
@@ -38,14 +40,25 @@ public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.s
         return new StoreAdapter.storeViewholder(view);
     }
 
-    class storeViewholder extends RecyclerView.ViewHolder{
+
+    class storeViewholder extends RecyclerView.ViewHolder {
         TextView store_name, store_description;
         ImageView store_image;
-        public storeViewholder(@NonNull View itemView){
+
+        public storeViewholder(@NonNull View itemView) {
             super(itemView);
             store_name = itemView.findViewById(R.id.store_name);
             store_description = itemView.findViewById(R.id.store_description);
             store_image = itemView.findViewById(R.id.store_image);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(position);
+                    }
+                }
+            });
         }
 
 

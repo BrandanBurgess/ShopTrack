@@ -17,9 +17,11 @@ import com.example.shoptrack.R;
 import com.example.shoptrack.data.Product;
 import com.example.shoptrack.data.Store;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 public class ShopperStoreViewFragment extends Fragment {
@@ -41,6 +43,26 @@ public class ShopperStoreViewFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public void loadStoreDetails() {
+        DatabaseReference storeRef = FirebaseDatabase.getInstance().getReference().child("stores").child(store_id);
+        storeRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Store store = snapshot.getValue(Store.class);
+                if (store != null) {
+                    store_name.setText(store.title);
+                    Picasso.get().load(store.imageUrl).into(store_image);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                // Handle any errors here
+            }
+        });
+    }
+
+
     public static ShopperStoreViewFragment newInstance(String param1) {
         ShopperStoreViewFragment fragment = new ShopperStoreViewFragment();
         Bundle args = new Bundle();
@@ -48,6 +70,7 @@ public class ShopperStoreViewFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,8 +87,11 @@ public class ShopperStoreViewFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated (@NonNull View view, Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        store_name = getView().findViewById(R.id.store_name);
+        store_image = getView().findViewById(R.id.store_image);
 
         mbase = FirebaseDatabase.getInstance().getReference().child("stores").child(store_id).child("products");
 
@@ -82,15 +108,30 @@ public class ShopperStoreViewFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-        store_name = getView().findViewById(R.id.store_name);
-        store_image = getView().findViewById(R.id.store_image);
-
-        String storeName = mbase.child("stores").child(store_id).child("title").toString();
-
-        store_name.setText(storeName);
-        Picasso.get().load(mbase.child("stores").child(store_id).child("imageUrl").toString()).into(store_image);
-
+        loadStoreDetails(); // Load the store details here after views are initialized
     }
+    class storeViewholder extends RecyclerView.ViewHolder {
+        TextView store_name, store_description;
+        ImageView store_image;
+
+        public storeViewholder(@NonNull View itemView) {
+            super(itemView);
+            store_name = itemView.findViewById(R.id.store_name); // Initialize TextView here
+            store_description = itemView.findViewById(R.id.store_description); // Initialize TextView here
+            store_image = itemView.findViewById(R.id.store_image); // Initialize ImageView here
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onItemClick(position);
+                    }
+                }
+            });
+        }
+    }
+
 
     @Override
     public void onStart() {
