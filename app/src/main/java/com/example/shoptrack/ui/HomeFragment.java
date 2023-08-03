@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Store;
-public class HomeFragment extends Fragment implements StoreAdapter.onItemClickListener {
+public class HomeFragment extends Fragment {
 
     public RecyclerView recyclerView;
     StoreAdapter adapter;
@@ -72,21 +72,21 @@ public class HomeFragment extends Fragment implements StoreAdapter.onItemClickLi
 
 
     //implement the interface method
-    @Override
-    public void onItemClick(int position) {
-        Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_SHORT).show();
-        //get the store id
-        String store_id = adapter.getRef(position).getKey();
-        //create a new instance of the fragment
-        ShopperStoreViewFragment shopperStoreViewFragment = ShopperStoreViewFragment.newInstance(store_id);
-        //replace the current fragment with the new fragment
-        replaceFragment(shopperStoreViewFragment);
-    }
+//    @Override
+//    public void onItemClick(int position) {
+//        Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_SHORT).show();
+//        //get the store id
+//        String store_id = adapter.getRef(position).getKey();
+//        //create a new instance of the fragment
+//        ShopperStoreViewFragment shopperStoreViewFragment = ShopperStoreViewFragment.newInstance(store_id);
+//        //replace the current fragment with the new fragment
+//        replaceFragment(shopperStoreViewFragment);
+//    }
 
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getParentFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.home_frame_layout, fragment);
-        fragmentTransaction.commit();
-    }
+//    private void replaceFragment(Fragment fragment){
+//        FragmentManager fragmentManager = getParentFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        fragmentTransaction.replace(R.id.home_frame_layout, fragment);
+//        fragmentTransaction.commit();
+//    }
 }

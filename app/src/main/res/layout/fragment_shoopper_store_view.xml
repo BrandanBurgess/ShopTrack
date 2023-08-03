@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/shopper_store_view_store_logo"
+            android:id="@+id/shopper_store_logo"
             android:layout_width="45dp"
             android:layout_height="36dp"
             android:layout_marginTop="16dp"
@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/shopper_store_store_name"
+            android:id="@+id/shopper_store_name"
             android:layout_width="259dp"
             android:layout_height="34dp"
             android:layout_marginTop="16dp"
@@ -32,7 +32,7 @@
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.116"
-            app:layout_constraintStart_toEndOf="@+id/shopper_store_view_store_logo"
+            app:layout_constraintStart_toEndOf="@+id/shopper_store_logo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View

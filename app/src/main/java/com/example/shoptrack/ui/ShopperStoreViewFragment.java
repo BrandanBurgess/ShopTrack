@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,20 +33,18 @@ public class ShopperStoreViewFragment extends Fragment {
 
     public String store_id;
 
-    TextView store_name;
-    ImageView store_image;
-
-
+    TextView shopper_store_name;
+    ImageView shopper_store_image;
 
 
     public ShopperStoreViewFragment() {
         // Required empty public constructor
     }
 
-    public static ShopperStoreViewFragment newInstance(String param1) {
+    public static ShopperStoreViewFragment newInstance(String store_id) {
         ShopperStoreViewFragment fragment = new ShopperStoreViewFragment();
         Bundle args = new Bundle();
-        args.putString("store_id", param1);
+        args.putString("store_id", store_id);
         fragment.setArguments(args);
         return fragment;
     }
@@ -82,26 +82,29 @@ public class ShopperStoreViewFragment extends Fragment {
 
         recyclerView.setAdapter(adapter);
 
-        store_name = getView().findViewById(R.id.store_name);
-        store_image = getView().findViewById(R.id.store_image);
+        shopper_store_name = getView().findViewById(R.id.shopper_store_name);
+        shopper_store_image = getView().findViewById(R.id.shopper_store_logo);
 
-        String storeName = mbase.child("stores").child(store_id).child("title").toString();
-
-        store_name.setText(storeName);
-        Picasso.get().load(mbase.child("stores").child(store_id).child("imageUrl").toString()).into(store_image);
+        mbase.getParent().child(store_id).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Store store = task.getResult().getValue(Store.class);
+                shopper_store_name.setText(store.title);
+                Picasso.get().load(store.imageUrl).into(shopper_store_image);
+            } else {
+                // Handle failures
+                // ...
+            }
+        });
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
+    public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.home_frame_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
-    @Override
-    public void onStop() {
-        super.onStop();
-        adapter.stopListening();
     }
 
 

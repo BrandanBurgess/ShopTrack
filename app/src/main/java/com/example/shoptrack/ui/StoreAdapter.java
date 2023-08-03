@@ -5,6 +5,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoptrack.R;
@@ -13,7 +16,7 @@ import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
-public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.storeViewholder> {
+public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.storeViewholder>{
 
     public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options) {
         super(options);
@@ -25,6 +28,17 @@ public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.s
         holder.store_name.setText(model.title);
         holder.store_description.setText(model.description);
         Picasso.get().load(model.imageUrl).into(holder.store_image);
+
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String store_id = getRef(position).getKey();
+                Fragment fragment = ShopperStoreViewFragment.newInstance(store_id);
+                ((ShopperStoreViewFragment) fragment).replaceFragment(fragment);
+            }
+        });
 
     }
 
@@ -46,13 +60,9 @@ public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.s
             store_name = itemView.findViewById(R.id.store_name);
             store_description = itemView.findViewById(R.id.store_description);
             store_image = itemView.findViewById(R.id.store_image);
+
         }
-
-
     }
-    // make a click listener interface
-    public interface onItemClickListener{
-        void onItemClick(int position);
-    }
+
 
 }
