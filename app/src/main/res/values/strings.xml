@@ -38,4 +38,8 @@
     <string name="product_description">product_description</string>
     <string name="product_image_url">product_image_url</string>
     <string name="add_image">add_image</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="empty_cart">Your cart is empty.</string>
+    <string name="clear_cart">Clear</string>
+    <string name="submit_cart">Submit</string>
 </resources>

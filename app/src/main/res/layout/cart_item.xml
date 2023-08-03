@@ -1,0 +1,62 @@
+<!-- item_order.xml -->
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/border"
+    android:background_tint="@drawable/border"
+    android:elevation="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Place your views here for each item in the cart -->
+        <TextView
+            android:id="@+id/productNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Product Name"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/productPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:text="$0.00"
+            android:textSize="14sp" />
+
+        <!-- + button -->
+        <ImageButton
+            android:id="@+id/increaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_add" />
+
+        <!-- - button -->
+        <ImageButton
+            android:id="@+id/decreaseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:layout_toStartOf="@id/increaseButton"
+            android:src="@drawable/ic_remove" />
+
+        <!-- Delete button -->
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/productNameTextView"
+            android:layout_toStartOf="@id/decreaseButton"
+            android:src="@drawable/ic_delete" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
