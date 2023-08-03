@@ -120,8 +120,10 @@ public class Product implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeDouble(price);
         dest.writeString(name);
+        dest.writeDouble(price);
+        dest.writeString(image);
+        dest.writeString(description);
         dest.writeString(storeId);
         dest.writeInt(quantity);
     }
