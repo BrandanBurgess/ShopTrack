@@ -6,8 +6,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoptrack.R;
@@ -18,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.storeViewholder>{
 
-    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options) {
+    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options, HomeFragment homeFragment) {
         super(options);
     }
 

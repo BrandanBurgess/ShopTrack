@@ -15,12 +15,11 @@ public class ProductViewHolder extends RecyclerView.ViewHolder {
     TextView productDescriptionTextView;
     ImageView productImageView;
 
-    public ProductViewHolder(@NonNull View itemView) {
+    ProductViewHolder(View itemView) {
         super(itemView);
-
-        productNameTextView = itemView.findViewById(R.id.productNameTextView);
-        productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
-        productDescriptionTextView = itemView.findViewById(R.id.productDescriptionTextView);
+        productNameTextView = itemView.findViewById(R.id.productNameTextView); // Changed to product_name
+        productPriceTextView = itemView.findViewById(R.id.productPriceTextView); // Changed to product_price
+        productDescriptionTextView = itemView.findViewById(R.id.productDescriptionTextView); // Changed to product_description
         productImageView = itemView.findViewById(R.id.productImageView); // make sure this line exists
     }
 }

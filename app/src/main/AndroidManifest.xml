@@ -39,6 +39,7 @@
             android:exported="true" />
         <activity android:name=".ui.StoreInsideActivity" />
         <activity android:name=".ui.CreateProductActivity" />
+        <activity android:name=".ui.StoreFragment" />
     </application>
 
 </manifest>
