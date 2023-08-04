@@ -44,4 +44,7 @@
     <string name="submit_cart">Submit</string>
     <string name="total">Total:</string>
     <string name="test">+item</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
 </resources>

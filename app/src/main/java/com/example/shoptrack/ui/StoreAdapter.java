@@ -18,8 +18,11 @@ import com.squareup.picasso.Picasso;
 
 public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.storeViewholder>{
 
-    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options) {
+    private FragmentManager fragmentManager;
+
+    public StoreAdapter(@NonNull FirebaseRecyclerOptions<Store> options, FragmentManager fragmentManager) {
         super(options);
+        this.fragmentManager = fragmentManager;
     }
 
     @Override
@@ -35,10 +38,18 @@ public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.s
             @Override
             public void onClick(View view) {
                 String store_id = getRef(position).getKey();
-                Fragment fragment = ShopperStoreViewFragment.newInstance(store_id);
-                ((ShopperStoreViewFragment) fragment).replaceFragment(fragment);
+                Fragment fragment = StoreView.newInstance(store_id);
+                replaceFragment(fragment);
             }
         });
+
+    }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.home_frame_layout, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
     }
 

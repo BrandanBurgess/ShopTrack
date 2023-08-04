@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
+
     @Override
     public void onViewCreated (@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -53,10 +54,12 @@ public class HomeFragment extends Fragment {
                         .setQuery(mbase, Store.class)
                         .build();
 
-        adapter = new StoreAdapter(options);
+        adapter = new StoreAdapter(options, getParentFragmentManager());
 
         recyclerView.setAdapter(adapter);
     }
+
+
 
     @Override
     public void onStart(){
@@ -71,22 +74,5 @@ public class HomeFragment extends Fragment {
     }
 
 
-    //implement the interface method
-//    @Override
-//    public void onItemClick(int position) {
-//        Toast.makeText(getContext(), "Item Clicked", Toast.LENGTH_SHORT).show();
-//        //get the store id
-//        String store_id = adapter.getRef(position).getKey();
-//        //create a new instance of the fragment
-//        ShopperStoreViewFragment shopperStoreViewFragment = ShopperStoreViewFragment.newInstance(store_id);
-//        //replace the current fragment with the new fragment
-//        replaceFragment(shopperStoreViewFragment);
-//    }
 
-//    private void replaceFragment(Fragment fragment){
-//        FragmentManager fragmentManager = getParentFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.home_frame_layout, fragment);
-//        fragmentTransaction.commit();
-//    }
 }

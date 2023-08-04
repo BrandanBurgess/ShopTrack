@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:text="Create Store"
         android:layout_below="@+id/user_role_text"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -25,8 +26,19 @@
         android:layout_height="wrap_content"
         android:text="Add Product"
         android:layout_below="@+id/btn_create_store"
+        android:backgroundTint="@color/colorPrimary"
         android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
+        />
+
+    <ImageView
+        android:id="@+id/store_image_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerInParent="true"
+        android:padding="10dp"
+        android:contentDescription="@string/store_image"
+        />
+
     <TextView
         android:id="@+id/store_title_text"
         android:layout_width="wrap_content"
@@ -34,23 +46,20 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:padding="10dp"
-        android:text="Store Title"/>
+        android:layout_below="@+id/store_image_view"
+        android:layout_centerHorizontal="true"
+        android:text="Store Title"
+        />
 
-    <!-- Add this TextView for displaying store description -->
     <TextView
         android:id="@+id/store_description_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
         android:padding="10dp"
-        android:text="Store Description"/>
-
-    <!-- Add this ImageView for displaying store image -->
-    <ImageView
-        android:id="@+id/store_image_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:padding="10dp"
-        android:contentDescription="@string/store_image"/>
+        android:layout_below="@+id/store_title_text"
+        android:layout_centerHorizontal="true"
+        android:text="Store Description"
+        />
 
 </RelativeLayout>

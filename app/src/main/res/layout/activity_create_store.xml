@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,8 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+        android:orientation="vertical"
+        android:padding="8dp">
 
         <EditText
             android:id="@+id/store_title_input"
@@ -19,7 +18,9 @@
             android:hint="@string/store_title"
             android:minHeight="48dp"
             android:paddingTop="4dp"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            android:drawablePadding="8dp"
+            android:layout_marginBottom="8dp"/>
 
         <EditText
             android:id="@+id/store_description_input"
@@ -28,25 +29,33 @@
             android:hint="Store Description"
             android:minHeight="48dp"
             android:paddingTop="4dp"
-            android:paddingBottom="4dp"/>
+            android:paddingBottom="4dp"
+            android:drawablePadding="8dp"
+            android:layout_marginBottom="8dp"/>
 
         <ImageView
             android:id="@+id/store_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:scaleType="centerCrop" />
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="8dp"/>
 
         <Button
             android:id="@+id/add_image_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Image" />
+            android:text="Add Image"
+            android:backgroundTint="@color/colorAccent"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"/>
 
         <Button
             android:id="@+id/create_store_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/create_store"/>
+            android:text="@string/create_store"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/white"/>
 
     </LinearLayout>
 

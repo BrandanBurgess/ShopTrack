@@ -107,10 +107,13 @@ public class StoreFragment extends Fragment {
                                                         userRoleText.setVisibility(View.GONE);
                                                     } else {
                                                         // Store does not exist, show create store button and role text
-                                                        userRoleText.setText("Yes, you are a store owner. Create your store now!");
+                                                        userRoleText.setText("Create your store now!");
                                                         createStoreButton.setVisibility(View.VISIBLE);
-                                                        addProductButton.setVisibility(View.VISIBLE);
+                                                        addProductButton.setVisibility(View.GONE);
                                                         userRoleText.setVisibility(View.VISIBLE);
+                                                        storeTitleText.setVisibility(View.GONE);
+                                                        storeDescriptionText.setVisibility(View.GONE);
+                                                        storeImageView.setVisibility(View.GONE);
                                                     }
                                                 }
 
@@ -121,6 +124,11 @@ public class StoreFragment extends Fragment {
                                             });
                                 } else {
                                     userRoleText.setText("You are a shopper. You need to register as a store owner to create a store.");
+                                    storeTitleText.setVisibility(View.GONE);
+                                    storeDescriptionText.setVisibility(View.GONE);
+                                    storeImageView.setVisibility(View.GONE);
+                                    createStoreButton.setVisibility(View.GONE);
+                                    addProductButton.setVisibility(View.GONE);
                                 }
                             }
                         }

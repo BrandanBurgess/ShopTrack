@@ -160,6 +160,8 @@ public class CreateStoreActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(CreateStoreActivity.this, "Store created successfully", Toast.LENGTH_SHORT).show();
                         // Navigate to StoreActivity here
+                        Intent intent = new Intent(CreateStoreActivity.this, StoreInsideActivity.class);
+                        startActivity(intent);
                         finish();
                     }
                 })
