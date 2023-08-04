@@ -34,15 +34,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
     }
 
     public void deleteItem(int position) {
-        if (orderItemList.size() >1) {
-            OrderItem deletedItem = orderItemList.remove(position);
-            if (deletedItem != null) {
-                cart.removeOrderItem(deletedItem);
-                notifyItemRemoved(position);
-            }
+        if (orderItemList.size() == 1) {
+            cart.clearCart();
+            notifyItemRemoved(position);
         }
-        else{
-            //Do a toast
+        else {
+            cart.removeOrderItem(orderItemList.get(position));
+            notifyItemRemoved(position);
         }
     }
 
@@ -52,16 +50,23 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
             addingItem.setQuantity(addingItem.getQuantity() + 1);
             notifyItemChanged(position);
         }
+
     }
 
     public void subtractItem(int position) {
-        if (orderItemList.get(position).getQuantity() > 1){
+        if (orderItemList.get(position).getQuantity() >= 1){
             OrderItem subtractingItem = orderItemList.get(position);
             if (subtractingItem != null) {
                 subtractingItem.setQuantity(subtractingItem.getQuantity() - 1);
                 notifyItemChanged(position);
+                if (subtractingItem.getQuantity() == 0) {
+                    deleteItem(position);
+                    notifyItemChanged(position);
+                }
             }
         }
+
+
     }
 
 
