@@ -77,6 +77,20 @@
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_storefront_24" />
 
+        <Button
+            android:id="@+id/addToCartBtn"
+            android:layout_width="105dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="24dp"
+            android:backgroundTint="@color/dark_blue"
+            android:text="@string/ADD2Cart"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.102" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

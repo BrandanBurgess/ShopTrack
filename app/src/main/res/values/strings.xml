@@ -47,4 +47,5 @@
     <string name="name">Name</string>
     <string name="price">Price</string>
     <string name="description">Description</string>
+    <string name="ADD2Cart">ADD</string>
 </resources>

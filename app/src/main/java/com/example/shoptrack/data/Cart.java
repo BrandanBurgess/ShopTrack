@@ -10,7 +10,7 @@ public class Cart implements Parcelable {
     private List<OrderItem> sCart;
 
     // Singleton instance
-    private static Cart instance;
+    public static Cart instance;
 
     private Cart() {
         sCart = new ArrayList<>();
@@ -28,12 +28,22 @@ public class Cart implements Parcelable {
     }
 
     public void addOrderItem(OrderItem orderItem) {
-        sCart.add(orderItem);
+        if (sCart.contains(orderItem)) {
+            int index = sCart.indexOf(orderItem);
+            OrderItem existingOrderItem = sCart.get(index);
+            existingOrderItem.updateQuantity(existingOrderItem.getQuantity() + 1);
+            return;
+        }
+        else{
+            sCart.add(orderItem);
+        }
+
     }
 
     public void removeOrderItem(OrderItem orderItem) {
         sCart.remove(orderItem);
     }
+
     public void clearCart() {
         sCart.clear();
     }
@@ -71,5 +81,13 @@ public class Cart implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeTypedList(sCart);
+    }
+
+    public double getTotal(){
+        double total = 0;
+        for(OrderItem orderItem : sCart){
+            total += orderItem.getProduct().getPrice() * orderItem.getQuantity();
+        }
+        return total;
     }
 }

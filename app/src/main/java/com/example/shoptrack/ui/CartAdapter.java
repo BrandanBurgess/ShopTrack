@@ -3,6 +3,7 @@ package com.example.shoptrack.ui;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,16 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Cart;
 import com.example.shoptrack.data.OrderItem;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolder> {
     private List<OrderItem> orderItemList;
-    private Cart cart;
+    public static Cart cart;
 
-    public CartAdapter(List<OrderItem> orderItemList, Cart cart) {
+    public CartAdapter(List<OrderItem> orderItemList) {
         this.orderItemList = orderItemList;
-        this.cart = cart;
+        this.cart = Cart.getInstance();
     }
 
     @NonNull
@@ -98,17 +100,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
         TextView productPriceTextView;
         TextView productQuantityTextView;
 
+        ImageView productImageView;
+
         OrderViewHolder(@NonNull View itemView) {
             super(itemView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
             productQuantityTextView = itemView.findViewById(R.id.productQuantityTextView);
+            productImageView = itemView.findViewById(R.id.productImageView);
         }
 
         void bindOrderItem(OrderItem orderItem) {
             productNameTextView.setText(orderItem.getProduct().getName());
             productPriceTextView.setText(String.format("$%.2f", orderItem.getProduct().getPrice()*orderItem.getQuantity()));
             productQuantityTextView.setText(String.valueOf(orderItem.getQuantity()));
+            Picasso.get().load(orderItem.getProduct().getImageUrl()).into(productImageView);
         }
     }
 }

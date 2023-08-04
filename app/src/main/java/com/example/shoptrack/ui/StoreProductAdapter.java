@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoptrack.R;
+import com.example.shoptrack.data.Cart;
+import com.example.shoptrack.data.OrderItem;
 import com.example.shoptrack.data.Product;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -35,6 +37,15 @@ public class StoreProductAdapter extends FirebaseRecyclerAdapter <Product, Store
         holder.product_name.setText(model.name);
         holder.product_description.setText(model.description);
         holder.product_price.setText("$" + model.price.toString());
+        Picasso.get().load(model.imageUrl).into(holder.product_image);
+
+        holder.itemView.findViewById(R.id.addToCartBtn).setOnClickListener(view -> {
+            Log.d("DebugTag", "Add to cart button clicked!");
+
+            OrderItem orderItem = new OrderItem(model,1, model.ownerId);
+
+            Cart.instance.addOrderItem(orderItem);
+        });
     }
 
     @NonNull

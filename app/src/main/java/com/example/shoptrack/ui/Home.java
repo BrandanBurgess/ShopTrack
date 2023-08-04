@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.shoptrack.R;
+import com.example.shoptrack.data.Cart;
 import com.example.shoptrack.databinding.ActivityHomeBinding;
 
 
@@ -21,6 +22,8 @@ public class Home extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new HomeFragment());
         getSupportActionBar().hide();
+
+        Cart opening = Cart.getInstance();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
