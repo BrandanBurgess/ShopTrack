@@ -58,7 +58,6 @@ public class Register extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
 

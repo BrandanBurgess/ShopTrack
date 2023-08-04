@@ -9,15 +9,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoptrack.R;
+import com.example.shoptrack.data.Cart;
 import com.example.shoptrack.data.OrderItem;
 
 import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolder> {
     private List<OrderItem> orderItemList;
+    private Cart cart;
 
-    public CartAdapter(List<OrderItem> orderItemList) {
+    public CartAdapter(List<OrderItem> orderItemList, Cart cart) {
         this.orderItemList = orderItemList;
+        this.cart = cart;
     }
 
     @NonNull
@@ -27,16 +30,60 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
         return new OrderViewHolder(view);
     }
 
+    public void deleteItem(int position) {
+        OrderItem deletedItem = orderItemList.remove(position);
+        if (deletedItem != null) {
+            cart.removeOrderItem(deletedItem);
+            notifyItemRemoved(position);
+        }
+    }
+
+    public void addItem(int position) {
+        OrderItem addingItem = orderItemList.get(position);
+        if (addingItem != null) {
+            addingItem.setQuantity(addingItem.getQuantity() + 1);
+            notifyItemChanged(position);
+        }
+    }
+
+    public void subtractItem(int position) {
+        OrderItem subtractingItem = orderItemList.get(position);
+        if (subtractingItem != null) {
+            subtractingItem.setQuantity(subtractingItem.getQuantity() - 1);
+            notifyItemChanged(position);
+        }
+    }
+
+
     @Override
     public void onBindViewHolder(@NonNull OrderViewHolder holder, int position) {
         OrderItem orderItem = orderItemList.get(position);
         holder.bindOrderItem(orderItem);
+
+        holder.itemView.findViewById(R.id.deleteButtonCart).setOnClickListener(view -> {
+            // Call the deleteItem method of the CartAdapter to remove the item
+            deleteItem(position);
+        });
+
+        holder.itemView.findViewById(R.id.increaseButtonCart).setOnClickListener(view -> {
+            // Call the addItem method of the CartAdapter to add the item
+            addItem(position);
+        });
+
+        holder.itemView.findViewById(R.id.decreaseButtonCart).setOnClickListener(view -> {
+            // Call the subtractItem method of the CartAdapter to subtract the item
+            subtractItem(position);
+        });
+
     }
 
     @Override
     public int getItemCount() {
         return orderItemList.size();
     }
+
+
+
 
     static class OrderViewHolder extends RecyclerView.ViewHolder {
         TextView productNameTextView;
@@ -52,7 +99,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
 
         void bindOrderItem(OrderItem orderItem) {
             productNameTextView.setText(orderItem.getProduct().getName());
-            productPriceTextView.setText(String.format("$%.2f", orderItem.getProduct().getPrice()));
+            productPriceTextView.setText(String.format("$%.2f", orderItem.getProduct().getPrice()*orderItem.getQuantity()));
             productQuantityTextView.setText(String.valueOf(orderItem.getQuantity()));
         }
     }

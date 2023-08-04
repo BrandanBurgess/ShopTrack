@@ -42,7 +42,6 @@
     <string name="empty_cart">Your cart is empty.</string>
     <string name="clear_cart">Clear</string>
     <string name="submit_cart">Submit</string>
-    <string name="name">Name</string>
-    <string name="price">Price</string>
-    <string name="description">Description</string>
+    <string name="total">Total:</string>
+    <string name="test">+item</string>
 </resources>
