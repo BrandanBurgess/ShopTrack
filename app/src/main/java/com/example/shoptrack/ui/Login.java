@@ -45,7 +45,9 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
+        if (getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
 
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
