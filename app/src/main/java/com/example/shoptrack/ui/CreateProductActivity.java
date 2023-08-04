@@ -52,7 +52,7 @@ public class CreateProductActivity extends AppCompatActivity {
         productNameInput = findViewById(R.id.product_name_input);
         productPriceInput = findViewById(R.id.product_price_input);
         productDescriptionInput = findViewById(R.id.product_description_input);
-        productImage = findViewById(R.id.product_image);
+        productImage = findViewById(R.id.shopper_product_image);
         Button createProductButton = findViewById(R.id.create_product_btn);
         Button addImageButton = findViewById(R.id.add_image_btn);
 

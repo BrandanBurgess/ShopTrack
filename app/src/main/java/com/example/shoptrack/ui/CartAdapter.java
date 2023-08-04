@@ -31,11 +31,19 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
     }
 
     public void deleteItem(int position) {
-        OrderItem deletedItem = orderItemList.remove(position);
-        if (deletedItem != null) {
-            cart.removeOrderItem(deletedItem);
-            notifyItemRemoved(position);
+        if (orderItemList.size() > 1){
+            OrderItem deletedItem = orderItemList.remove(position);
+            if (deletedItem != null) {
+                cart.removeOrderItem(deletedItem);
+                notifyItemRemoved(position);
+            }
         }
+        else {
+            // set cart to empty
+            cart.clearCart();
+
+        }
+
     }
 
     public void addItem(int position) {
