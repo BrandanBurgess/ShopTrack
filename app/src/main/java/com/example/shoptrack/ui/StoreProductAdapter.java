@@ -42,7 +42,7 @@ public class StoreProductAdapter extends FirebaseRecyclerAdapter <Product, Store
     public storeProductViewholder onCreateViewHolder(@NonNull ViewGroup parent,
                                               int viewType)
     {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_shoopper_store_view, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product, parent, false);
 
         return new StoreProductAdapter.storeProductViewholder(view);
     }
@@ -59,7 +59,6 @@ public class StoreProductAdapter extends FirebaseRecyclerAdapter <Product, Store
             product_image = itemView.findViewById(R.id.shopper_product_image);
 
         }
-
 
 
     }

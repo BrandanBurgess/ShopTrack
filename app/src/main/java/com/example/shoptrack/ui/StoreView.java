@@ -65,6 +65,8 @@ public class StoreView extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mbase = FirebaseDatabase.getInstance().getReference().child("stores");
+        shopper_store_name = getView().findViewById(R.id.shopper_store_name);
+        shopper_store_logo = getView().findViewById(R.id.shopper_store_logo);
 
 
         mbase.addValueEventListener(new ValueEventListener() {
@@ -106,9 +108,6 @@ public class StoreView extends Fragment {
         recyclerView.setAdapter(adapter);
 
 
-        //set the store name and logo
-        shopper_store_name = getView().findViewById(R.id.shopper_store_name);
-        shopper_store_logo = getView().findViewById(R.id.shopper_store_logo);
     }
     @Override
     public void onStart(){
