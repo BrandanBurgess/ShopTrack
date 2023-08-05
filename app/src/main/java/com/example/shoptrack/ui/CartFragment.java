@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -70,6 +71,7 @@ public class CartFragment extends Fragment {
         //Dynamically Update total textview
         TextView total = view.findViewById(R.id.totalTextView);
         total.setText("Total: $" + cart.getTotal());
+        cartAdapter.notifyDataSetChanged();
 
 
         View addButton = view.findViewById(R.id.button);
@@ -95,10 +97,12 @@ public class CartFragment extends Fragment {
                 if (cart.getsCart().size() > 0) {
                     UserReference curUser = UserReference.getInstance();
                     Order order = new Order(cart.getsCart(),curUser.getUserID());
-
                     OrderWriter writer = new OrderWriter();
                     writer.writeOrderToFirebase(order);
+                    //refresh the UI to have the cart be empty
                     cart.clearCart();
+                    cartAdapter.notifyDataSetChanged();
+
                     Toast.makeText(getContext(), "Order Submitted", Toast.LENGTH_SHORT).show();
                 }
                 else{

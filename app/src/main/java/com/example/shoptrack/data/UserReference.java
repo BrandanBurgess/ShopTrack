@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -17,6 +19,7 @@ public class UserReference {
 
     private static UserReference instance1 = null;
     public String userID;
+    public String our_email;
 
 
     private UserReference() {
@@ -27,8 +30,8 @@ public class UserReference {
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        String our_email;
-        userID = "";
+
+
 
         if (currentUser != null){
             our_email = currentUser.getEmail();
@@ -38,43 +41,29 @@ public class UserReference {
             throw new IllegalArgumentException("No email 1");
         }
 
-        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+        DatabaseReference mbase = FirebaseDatabase.getInstance().getReference("users");
+        String key = mbase.getKey().toString();
+        Log.d("The key is: ", key);
 
-        Query emailQuery = usersRef.orderByChild("email").equalTo(our_email);
-
-
-
-        emailQuery.getRef(); // Get the reference to the query
-
-
-
-        Log.d("QUERY IS" , emailQuery.getRef().toString());
-
-        emailQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+        mbase.orderByChild("email").equalTo(our_email).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    // User with the specified email exists
-                    String ID;
-                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                        // The snapshot will contain the user node that matches the email
-                        ID = snapshot.getKey(); // Get the user ID
-                        userID = ID;
-                        Log.d("id is: ", userID);
-                    }
-                } else {
-                    Log.d("id is: ", userID);
-                    throw new IllegalArgumentException("No match email 2");
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                String id;
+                Log.d("The snapshot is: ", snapshot.toString());
+                for (DataSnapshot childSnapshot: snapshot.getChildren()) {
+                    id = childSnapshot.getKey();
+                    sendKey(id);
+                    Log.d("The user id is: ", userID);
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.d("Error: ", "Error in getting user ID");
+
             }
-
-
         });
+
+
     }
 
     public static UserReference getInstance() {
@@ -86,6 +75,9 @@ public class UserReference {
 
     public String getUserID() {
         return userID;
+    }
+    public void sendKey(String key){
+        userID = key;
     }
 
     public void setUserID(String userID) {

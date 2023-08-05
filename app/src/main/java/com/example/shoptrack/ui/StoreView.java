@@ -68,7 +68,6 @@ public class StoreView extends Fragment {
         shopper_store_name = getView().findViewById(R.id.shopper_store_name);
         shopper_store_logo = getView().findViewById(R.id.shopper_store_logo);
 
-
         mbase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Cart;
+import com.example.shoptrack.data.UserReference;
 import com.example.shoptrack.databinding.ActivityHomeBinding;
 
 
@@ -26,6 +27,7 @@ public class Home extends AppCompatActivity {
         }
 
         Cart opening = Cart.getInstance();
+        UserReference user = UserReference.getInstance();
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 

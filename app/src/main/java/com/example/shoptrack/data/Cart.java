@@ -46,6 +46,7 @@ public class Cart implements Parcelable {
 
     public void clearCart() {
         sCart.clear();
+        this.getTotal();
     }
 
     public void updateOrderItemQuantity(OrderItem orderItem, int quantity) {
