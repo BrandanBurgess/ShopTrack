@@ -1,6 +1,5 @@
 package com.example.shoptrack.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,11 +14,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoptrack.R;
-import com.example.shoptrack.data.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.shoptrack.firebase.FirebaseUserManager;
+import com.example.shoptrack.utils.DBConnection;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +34,8 @@ public class Register extends AppCompatActivity {
     TextView textView;
 
     RadioGroup radioGroup;
+
+    FirebaseUserManager userManager = DBConnection.getInstance().getUserManager();
 
     @Override
     public void onStart() {
@@ -94,6 +93,21 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
+                userManager.signUp(email, password, userRole, result -> {
+                    result.onSuccess(user -> {
+                        Toast.makeText(Register.this, "Account created",
+                                Toast.LENGTH_SHORT).show();
+
+                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        startActivity(intent);
+                        finish();
+                    }).onFailure(error -> {
+                        Toast.makeText(Register.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                });
+
+                /*
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -115,6 +129,7 @@ public class Register extends AppCompatActivity {
                                 }
                             }
                         });
+                */
             }
         });
     }

@@ -1,6 +1,5 @@
 package com.example.shoptrack.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,16 +14,9 @@ import android.widget.Toast;
 import com.example.shoptrack.R;
 import com.example.shoptrack.firebase.FirebaseUserManager;
 import com.example.shoptrack.utils.DBConnection;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.util.function.Consumer;
-
-import io.vavr.control.Try;
 
 public class Login extends AppCompatActivity {
 
@@ -46,22 +38,6 @@ public class Login extends AppCompatActivity {
             finish();
         }
     }
-
-    /*
-    @Override
-    private void handleLogin(Try<FirebaseUser> result) {
-        result.onSuccess(firebaseUser -> {
-            Toast.makeText(getApplicationContext(), "Login Successful",
-                    Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(getApplicationContext(), Home.class);
-            startActivity(intent);
-            finish();
-        }).onFailure(throwable -> {
-            Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_SHORT)
-                    .show();
-        });
-    }
-    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +64,6 @@ public class Login extends AppCompatActivity {
 
 
         buttonLogin.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view){
                 progressBar.setVisibility(View.VISIBLE);
@@ -105,7 +80,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(Login.this, "Enter password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // TODO: test if login works
+
                 userManager.logIn(email, password, result -> {
                     result.onSuccess(firebaseUser -> {
                         progressBar.setVisibility(View.GONE);
@@ -122,33 +97,6 @@ public class Login extends AppCompatActivity {
                     });
 
                 });
-                /*
-                mAuth.signInWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    progressBar.setVisibility(View.GONE);
-                                    // Sign in success, update UI with the signed-in user's information
-                                    //Log.d(TAG, "signInWithEmail:success");
-                                    //FirebaseUser user = mAuth.getCurrentUser();
-                                    //updateUI(user);
-                                    Toast.makeText(getApplicationContext(), "Login Successful",
-                                            Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), Home.class);
-                                    startActivity(intent);
-                                    finish();
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    //Log.w(TAG, "signInWithEmail:failure", task.getException());
-                                    Toast.makeText(Login.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                    //updateUI(null);
-                                }
-                            }
-                        });
-                 */
             }
         });
     }
