@@ -34,7 +34,7 @@
         android:layout_width="134dp"
         android:layout_height="60dp"
         android:backgroundTint="@color/dark_blue"
-        android:fontFamily="@font/poppins_bold"
+        android:fontFamily="@font/poppins_regular"
         android:text="@string/signup"
         android:textColor="@color/white"
         android:textSize="22sp"

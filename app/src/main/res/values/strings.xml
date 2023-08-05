@@ -31,4 +31,22 @@
     <string name="create_store">Create Store</string>
     <string name="store_image">store_image</string>
     <string name="select_image">select_image</string>
+    <string name="create_product">Create Product</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="product_name">product_name</string>
+    <string name="product_price">product_price</string>
+    <string name="product_description">product_description</string>
+    <string name="product_image_url">product_image_url</string>
+    <string name="add_image">add_image</string>
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="empty_cart">Your cart is empty.</string>
+    <string name="clear_cart">Clear</string>
+    <string name="submit_cart">Submit</string>
+    <string name="total">Total:</string>
+    <string name="test">+item</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="description">Description</string>
+    <string name="ADD2Cart">ADD</string>
+    <string name="logout_button">Log Out</string>
 </resources>

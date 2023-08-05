@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
 
     <application
         android:allowBackup="true"
@@ -35,6 +37,9 @@
         <activity
             android:name=".ui.CreateStoreActivity"
             android:exported="true" />
+        <activity android:name=".ui.StoreInsideActivity" />
+        <activity android:name=".ui.CreateProductActivity" />
+        <activity android:name=".ui.StoreFragment" />
     </application>
 
 </manifest>

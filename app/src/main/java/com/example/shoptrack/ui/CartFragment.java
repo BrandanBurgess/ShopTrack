@@ -3,64 +3,118 @@ package com.example.shoptrack.ui;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.shoptrack.R;
+import com.example.shoptrack.data.Cart;
+import com.example.shoptrack.data.Order;
+import com.example.shoptrack.data.OrderItem;
+import com.example.shoptrack.data.OrderWriter;
+import com.example.shoptrack.data.Product;
+import com.example.shoptrack.data.UserReference;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CartFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.List;
+
 public class CartFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private Cart cart; // The Cart instance that contains the order items
+    private RecyclerView cartRecyclerView;
+    private CartAdapter cartAdapter;
 
     public CartFragment() {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment CartFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CartFragment newInstance(String param1, String param2) {
-        CartFragment fragment = new CartFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void updateTextView(String toThis, View v) {
+        TextView textView = (TextView) v;
+        textView.setText(toThis);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cart, container, false);
+        View view = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        // Initialize the RecyclerView and set its layout manager
+        cartRecyclerView = view.findViewById(R.id.cartRecyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        cartRecyclerView.setLayoutManager(layoutManager);
+
+        // Create an instance of the CartAdapter with the order items from the Cart
+        cart = Cart.getInstance(); // Assuming Cart is implemented as a singleton
+        List<OrderItem> orderItemList = cart.getsCart();
+        cartAdapter = new CartAdapter(orderItemList); // Pass the cart reference here
+
+        // Set the CartAdapter to the RecyclerView
+        cartRecyclerView.setAdapter(cartAdapter);
+
+
+        View clearButton = view.findViewById(R.id.delete_cart);
+
+        clearButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Clear the Cart
+                cart.clearCart();
+                cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
+            }
+        });
+
+        //Dynamically Update total textview
+        TextView total = view.findViewById(R.id.totalTextView);
+        total.setText("Total: $" + cart.getTotal());
+        cartAdapter.notifyDataSetChanged();
+
+
+        View addButton = view.findViewById(R.id.button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Add a new OrderItem with product, quantity 0, and storeID = 1 to the Cart
+                Product newProduct = new Product("New Product", 5.0, "yo", "1", "2");
+                OrderItem newOrderItem = new OrderItem(newProduct, 0, "1");
+                cart.addOrderItem(newOrderItem);
+                cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
+            }
+        });
+
+        View submitButton = view.findViewById(R.id.submit_cart);
+
+        submitButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // Submit the Cart
+
+                Cart cart = Cart.getInstance();
+                if (cart.getsCart().size() > 0) {
+                    UserReference curUser = UserReference.getInstance();
+                    Order order = new Order(cart.getsCart(),curUser.getUserID());
+                    OrderWriter writer = new OrderWriter();
+                    writer.writeOrderToFirebase(order);
+                    //refresh the UI to have the cart be empty
+                    cart.clearCart();
+                    cartAdapter.notifyDataSetChanged();
+
+                    Toast.makeText(getContext(), "Order Submitted", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+
+
+        return view;
     }
 }
