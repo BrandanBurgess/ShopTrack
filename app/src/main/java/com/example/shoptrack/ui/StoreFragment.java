@@ -84,7 +84,7 @@ public class StoreFragment extends Fragment {
 
         return view;
     }
-
+// !
     private void fetchUserRole() {
         mDatabase.child("users").child(mAuth.getCurrentUser().getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
