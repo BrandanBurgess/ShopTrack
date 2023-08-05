@@ -19,7 +19,7 @@ import com.example.shoptrack.data.Product;
 
 import java.util.List;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartTotalListener {
 
     private Cart cart; // The Cart instance that contains the order items
     private RecyclerView cartRecyclerView;
@@ -47,7 +47,7 @@ public class CartFragment extends Fragment {
         // Create an instance of the CartAdapter with the order items from the Cart
         cart = Cart.getInstance(); // Assuming Cart is implemented as a singleton
         List<OrderItem> orderItemList = cart.getsCart();
-        cartAdapter = new CartAdapter(orderItemList); // Pass the cart reference here
+        cartAdapter = new CartAdapter(orderItemList, this); // Pass the cart reference here
 
         // Set the CartAdapter to the RecyclerView
         cartRecyclerView.setAdapter(cartAdapter);
@@ -61,6 +61,7 @@ public class CartFragment extends Fragment {
                 // Clear the Cart
                 cart.clearCart();
                 cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
+                onTotalAmountUpdated();
             }
         });
 
@@ -78,11 +79,18 @@ public class CartFragment extends Fragment {
                 OrderItem newOrderItem = new OrderItem(newProduct, 0, "1");
                 cart.addOrderItem(newOrderItem);
                 cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
+                onTotalAmountUpdated();
             }
         });
 
 
 
         return view;
+    }
+
+    @Override
+    public void onTotalAmountUpdated() {
+        TextView total = getView().findViewById(R.id.totalTextView);
+        total.setText("Total: $" + cart.getTotal());
     }
 }

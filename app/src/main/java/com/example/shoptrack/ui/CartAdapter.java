@@ -21,9 +21,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
     private List<OrderItem> orderItemList;
     public static Cart cart;
 
-    public CartAdapter(List<OrderItem> orderItemList) {
+    public CartTotalListener cartTotalListener;
+
+    public CartAdapter(List<OrderItem> orderItemList, CartTotalListener cartTotalListener) {
         this.orderItemList = orderItemList;
         this.cart = Cart.getInstance();
+        this.cartTotalListener = cartTotalListener;
     }
 
     @NonNull
@@ -47,8 +50,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
     public void addItem(int position) {
         OrderItem addingItem = orderItemList.get(position);
         if (addingItem != null) {
+
             addingItem.setQuantity(addingItem.getQuantity() + 1);
+
             notifyItemChanged(position);
+
         }
 
     }
@@ -78,16 +84,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
         holder.itemView.findViewById(R.id.deleteButtonCart).setOnClickListener(view -> {
             // Call the deleteItem method of the CartAdapter to remove the item
             deleteItem(position);
+            cartTotalListener.onTotalAmountUpdated();
         });
 
         holder.itemView.findViewById(R.id.increaseButtonCart).setOnClickListener(view -> {
             // Call the addItem method of the CartAdapter to add the item
             addItem(position);
+            cartTotalListener.onTotalAmountUpdated();
         });
 
         holder.itemView.findViewById(R.id.decreaseButtonCart).setOnClickListener(view -> {
             // Call the subtractItem method of the CartAdapter to subtract the item
             subtractItem(position);
+            cartTotalListener.onTotalAmountUpdated();
+
         });
 
     }
