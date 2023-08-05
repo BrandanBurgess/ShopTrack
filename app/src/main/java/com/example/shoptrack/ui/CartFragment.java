@@ -47,7 +47,7 @@ public class CartFragment extends Fragment {
         // Create an instance of the CartAdapter with the order items from the Cart
         cart = Cart.getInstance(); // Assuming Cart is implemented as a singleton
         List<OrderItem> orderItemList = cart.getsCart();
-        cartAdapter = new CartAdapter(orderItemList, cart); // Pass the cart reference here
+        cartAdapter = new CartAdapter(orderItemList); // Pass the cart reference here
 
         // Set the CartAdapter to the RecyclerView
         cartRecyclerView.setAdapter(cartAdapter);
@@ -63,6 +63,10 @@ public class CartFragment extends Fragment {
                 cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
             }
         });
+
+        //Dynamically Update total textview
+        TextView total = view.findViewById(R.id.totalTextView);
+        total.setText("Total: $" + cart.getTotal());
 
 
         View addButton = view.findViewById(R.id.button);

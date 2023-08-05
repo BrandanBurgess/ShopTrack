@@ -71,4 +71,13 @@ public class OrderItem implements Parcelable {
         dest.writeByte((byte) (completed ? 1 : 0));
         dest.writeString(storeID);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OrderItem)) return false;
+        OrderItem orderItem = (OrderItem) o;
+        return product.equals(orderItem.product) &&
+                storeID.equals(orderItem.storeID);
+    }
 }
