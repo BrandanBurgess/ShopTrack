@@ -1,65 +1,112 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.StoreFragment">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginTop="108dp"
+        android:background="@color/dark_blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/user_role_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:layout_centerInParent="true"/>
-
-    <Button
-        android:id="@+id/btn_create_store"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Store"
-        android:layout_below="@+id/user_role_text"
-        android:backgroundTint="@color/colorPrimary"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:id="@+id/btn_add_product"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Product"
-        android:layout_below="@+id/btn_create_store"
-        android:backgroundTint="@color/colorPrimary"
         android:layout_centerHorizontal="true"
-        />
+        android:layout_centerVertical="true"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/store_image_view"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_centerInParent="true"
-        android:padding="10dp"
-        android:contentDescription="@string/store_image"
-        />
-
-    <TextView
-        android:id="@+id/store_title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:padding="10dp"
-        android:layout_below="@+id/store_image_view"
         android:layout_centerHorizontal="true"
-        android:text="Store Title"
-        />
+        android:layout_centerVertical="true"
+        android:layout_marginTop="96dp"
+        android:contentDescription="@string/store_image"
+        android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <TextView
         android:id="@+id/store_description_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_bold"
         android:padding="10dp"
-        android:layout_below="@+id/store_title_text"
-        android:layout_centerHorizontal="true"
         android:text="Store Description"
-        />
+        android:textColor="@color/dark_blue"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store_title_text" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_create_store"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:backgroundTint="@color/dark_blue"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Create Store"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_role_text" />
+
+    <Button
+        android:id="@+id/btn_add_product"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="@color/dark_blue"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Add Product"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_store" />
+
+    <TextView
+        android:id="@+id/store_title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins_bold"
+        android:padding="10dp"
+        android:text="Store Title"
+        android:textColor="@color/dark_blue"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/store_image_view" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="354dp"
+        android:layout_height="90dp"
+        android:src="@drawable/mystore_banner"
+        app:layout_constraintBottom_toBottomOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mystore_banner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

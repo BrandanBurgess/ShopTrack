@@ -48,4 +48,5 @@
     <string name="price">Price</string>
     <string name="description">Description</string>
     <string name="ADD2Cart">ADD</string>
+    <string name="logout_button">Log Out</string>
 </resources>

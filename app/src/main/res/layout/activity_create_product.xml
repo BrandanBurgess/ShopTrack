@@ -14,33 +14,36 @@
             android:id="@+id/product_name_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_regular"
             android:hint="@string/name"
             android:inputType="text"
-            android:padding="10dp"
             android:minHeight="48dp"
-            android:layout_marginTop="8dp" />
+            android:padding="10dp" />
 
         <!-- Product Price Input -->
         <EditText
             android:id="@+id/product_price_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_regular"
             android:hint="@string/price"
             android:inputType="numberDecimal"
-            android:padding="10dp"
             android:minHeight="48dp"
-            android:layout_marginTop="8dp"/>
+            android:padding="10dp" />
 
         <!-- Product Description Input -->
         <EditText
             android:id="@+id/product_description_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_regular"
             android:hint="@string/description"
             android:inputType="textMultiLine"
-            android:padding="10dp"
             android:minHeight="48dp"
-            android:layout_marginTop="8dp" />
+            android:padding="10dp" />
 
         <!-- Product Image -->
         <ImageView
@@ -56,8 +59,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_regular"
             android:text="@string/add_image"
-            android:backgroundTint="@color/colorAccent" />
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
         <!-- Create Product Button -->
         <Button
@@ -65,8 +71,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="@string/create_product" />
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/create_product"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

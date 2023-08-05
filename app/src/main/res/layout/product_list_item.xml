@@ -8,18 +8,21 @@
         android:id="@+id/productNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
         android:text="Product Name" />
 
     <TextView
         android:id="@+id/productPriceTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
         android:text="Product Price" />
 
     <TextView
         android:id="@+id/productDescriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_regular"
         android:text="Product Description" />
 
     <ImageView

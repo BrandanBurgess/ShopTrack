@@ -15,23 +15,25 @@
             android:id="@+id/store_title_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/poppins_regular"
             android:hint="@string/store_title"
             android:minHeight="48dp"
             android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:drawablePadding="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:paddingBottom="4dp" />
 
         <EditText
             android:id="@+id/store_description_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:drawablePadding="8dp"
+            android:fontFamily="@font/poppins_regular"
             android:hint="Store Description"
             android:minHeight="48dp"
             android:paddingTop="4dp"
-            android:paddingBottom="4dp"
-            android:drawablePadding="8dp"
-            android:layout_marginBottom="8dp"/>
+            android:paddingBottom="4dp" />
 
         <ImageView
             android:id="@+id/store_image"
@@ -44,18 +46,22 @@
             android:id="@+id/add_image_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_regular"
             android:text="Add Image"
-            android:backgroundTint="@color/colorAccent"
             android:textColor="@color/white"
-            android:layout_marginBottom="8dp"/>
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/create_store_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/dark_blue"
+            android:fontFamily="@font/poppins_regular"
             android:text="@string/create_store"
-            android:backgroundTint="@color/colorPrimary"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
     </LinearLayout>
 

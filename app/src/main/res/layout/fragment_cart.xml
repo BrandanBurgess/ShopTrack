@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/relativeLayout2">
 
 
     <Button
@@ -35,12 +37,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="223dp"
-        android:layout_marginTop="29dp"
         android:layout_marginEnd="44dp"
-        android:layout_marginBottom="287dp"
         android:backgroundTint="@color/dark_blue"
         android:fontFamily="@font/poppins_bold"
         android:text="@string/submit_cart"
+        android:textColor="@color/white"
         android:textSize="12sp"
         app:cornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,25 +50,14 @@
         app:strokeColor="@color/black"
         app:strokeWidth="1px" />
 
-    <TextView
-        android:id="@+id/cartTitleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/dark_blue"
-        android:fontFamily="@font/poppins_black"
-        android:padding="16dp"
-        android:text="@string/shopping_cart"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="485dp"
         android:layout_below="@id/cartTitleTextView"
-        android:layout_marginTop="112dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="68dp" />
 
     <TextView
         android:id="@+id/totalTextView"
@@ -82,18 +72,6 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/cartTitleTextView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="337dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/w_shopping_cart" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="156dp"
@@ -106,4 +84,4 @@
         android:layout_marginBottom="51dp"
         android:text="@string/test" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

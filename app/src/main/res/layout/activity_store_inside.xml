@@ -15,17 +15,22 @@
         android:id="@+id/btn_create_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Product"
         android:layout_margin="10dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/white" />
+        android:backgroundTint="@color/dark_blue"
+        android:fontFamily="@font/poppins_regular"
+        android:text="Create Product"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
     <Button
         android:id="@+id/btn_edit_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/edit_product"
         android:layout_margin="10dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/white" />
+        android:backgroundTint="@color/dark_blue"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/edit_product"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
 </LinearLayout>
