@@ -1,8 +1,34 @@
 package com.example.shoptrack.data;
 
-public class Order {
-    public int quantity;
-    public boolean completed;
+import java.util.List;
 
-    // TODO: more fields are required here
+public class Order {
+    private List<OrderItem> order;
+    private String userID;
+
+    public Order() {
+    }
+
+    public Order (List<OrderItem> order, String userID) {
+        this.order = order;
+        this.userID = userID;
+    }
+
+    public List<OrderItem> getOrder() {
+        return order;
+    }
+
+    public void setOrder(List<OrderItem> order) {
+        this.order = order;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 }
+
+

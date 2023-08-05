@@ -19,7 +19,7 @@ import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolder> {
     private List<OrderItem> orderItemList;
-    public static Cart cart;
+    public Cart cart;
 
     public CartAdapter(List<OrderItem> orderItemList) {
         this.orderItemList = orderItemList;

@@ -14,8 +14,11 @@ import android.widget.Toast;
 
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Cart;
+import com.example.shoptrack.data.Order;
 import com.example.shoptrack.data.OrderItem;
+import com.example.shoptrack.data.OrderWriter;
 import com.example.shoptrack.data.Product;
+import com.example.shoptrack.data.UserReference;
 
 import java.util.List;
 
@@ -78,6 +81,31 @@ public class CartFragment extends Fragment {
                 OrderItem newOrderItem = new OrderItem(newProduct, 0, "1");
                 cart.addOrderItem(newOrderItem);
                 cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
+            }
+        });
+
+        View submitButton = view.findViewById(R.id.submit_cart);
+
+        submitButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                // Submit the Cart
+
+                Cart cart = Cart.getInstance();
+                if (cart.getsCart().size() > 0) {
+                    UserReference curUser = UserReference.getInstance();
+                    Order order = new Order(cart.getsCart(),curUser.getUserID());
+
+                    OrderWriter writer = new OrderWriter();
+                    writer.writeOrderToFirebase(order);
+                    cart.clearCart();
+                    Toast.makeText(getContext(), "Order Submitted", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 
