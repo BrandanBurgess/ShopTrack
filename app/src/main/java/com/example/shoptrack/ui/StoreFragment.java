@@ -30,7 +30,7 @@ public class StoreFragment extends Fragment {
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private TextView userRoleText;
-    private Button createStoreButton, addProductButton;
+    private Button createStoreButton, addProductButton, viewOrdersButton;
 
     private TextView storeTitleText, storeDescriptionText;
     private ImageView storeImageView;
@@ -46,6 +46,7 @@ public class StoreFragment extends Fragment {
         userRoleText = view.findViewById(R.id.user_role_text);
         createStoreButton = view.findViewById(R.id.btn_create_store);
         addProductButton = view.findViewById(R.id.btn_add_product);
+        viewOrdersButton = view.findViewById(R.id.storeOwnerViewOrdersButton);
 
         // Initially hide the buttons
         createStoreButton.setVisibility(View.GONE);
@@ -76,6 +77,14 @@ public class StoreFragment extends Fragment {
             public void onClick(View v) {
                 // Start the Store Inside Activity (or whatever you named it)
                 Intent intent = new Intent(getActivity(), StoreInsideActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        viewOrdersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(getActivity(), CompleteOrdersActivity.class);
                 startActivity(intent);
             }
         });

@@ -109,4 +109,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mystore_banner" />
 
+    <Button
+        android:id="@+id/storeOwnerViewOrdersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Orders"
+        app:layout_constraintBottom_toTopOf="@+id/store_image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

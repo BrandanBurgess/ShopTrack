@@ -3,6 +3,8 @@ package com.example.shoptrack.data;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+// Note: The author of this code is Sean (SheeperGit). See Sean's_Order_Implementation branch. //
+
 public class OrderItem implements Parcelable {
     public Product product;
     public int quantity;
