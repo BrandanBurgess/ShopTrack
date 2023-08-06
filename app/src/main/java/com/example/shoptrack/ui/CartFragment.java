@@ -38,6 +38,12 @@ public class CartFragment extends Fragment {
         textView.setText(toThis);
     }
 
+    public void updateTotal(View v) {
+        TextView total = (TextView) v.findViewById(R.id.totalTextView);
+        total.setText("Total: $" + cart.getTotal());
+        Log.d("CartFragment", "updateTotal: " + cart.getTotal());
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,22 +75,11 @@ public class CartFragment extends Fragment {
         });
 
         //Dynamically Update total textview
-        TextView total = view.findViewById(R.id.totalTextView);
-        total.setText("Total: $" + cart.getTotal());
+//        TextView total = view.findViewById(R.id.totalTextView);
+        updateTotal(view);
         cartAdapter.notifyDataSetChanged();
 
 
-        View addButton = view.findViewById(R.id.button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Add a new OrderItem with product, quantity 0, and storeID = 1 to the Cart
-                Product newProduct = new Product("New Product", 5.0, "yo", "1", "2");
-                OrderItem newOrderItem = new OrderItem(newProduct, 0, "1");
-                cart.addOrderItem(newOrderItem);
-                cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
-            }
-        });
 
         View submitButton = view.findViewById(R.id.submit_cart);
 
@@ -101,6 +96,7 @@ public class CartFragment extends Fragment {
                     writer.writeOrderToFirebase(order);
                     //refresh the UI to have the cart be empty
                     cart.clearCart();
+
                     cartAdapter.notifyDataSetChanged();
 
                     Toast.makeText(getContext(), "Order Submitted", Toast.LENGTH_SHORT).show();
