@@ -13,8 +13,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shopper_order_recycler_view"
-            android:layout_width="411dp"
-            android:layout_height="465dp"
+            android:layout_width="412dp"
+            android:layout_height="461dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"

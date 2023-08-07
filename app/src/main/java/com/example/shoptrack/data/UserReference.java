@@ -84,5 +84,9 @@ public class UserReference {
         this.userID = userID;
     }
 
+    public void setEmail(String email) {
+        this.our_email = email;
+    }
+
 
 }

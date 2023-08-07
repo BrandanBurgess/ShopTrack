@@ -118,6 +118,5 @@ public class Register extends AppCompatActivity {
                         });
             }
         });
-        UserReference user = UserReference.getInstance();
     }
 }

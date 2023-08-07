@@ -112,6 +112,7 @@ public class CartFragment extends Fragment implements CartAdapter.TotalUpdateLis
                     writer.writeOrderToFirebase(order);
                     //refresh the UI to have the cart be empty
                     cart.clearCart();
+                    updateTotal(total);
 
                     cartAdapter.notifyDataSetChanged();
 

@@ -107,10 +107,7 @@ public class Login extends AppCompatActivity {
                                 }
                             }
                         });
-
-
             }
         });
-        UserReference user = UserReference.getInstance();
     }
 }

@@ -1,9 +1,16 @@
 package com.example.shoptrack.data;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ServerValue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class OrderWriter {
+
+    public List<String> orderIDs = new ArrayList<String>();
+
     public void writeOrderToFirebase(Order order) {
         // Generate a new key for the order
         DatabaseReference ordersRef = FirebaseDatabase.getInstance().getReference().child("orders");
@@ -16,6 +23,11 @@ public class OrderWriter {
 //        newOrderRef.child("storeIDs").setValue(order.getStoreIDs());
         newOrderRef.child("StoreIDs").setValue(order.makeOrderIds());
         newOrderRef.child("userID").setValue(order.getUserID());
+        // Add a timestamp field using ServerValue.TIMESTAMP
+        newOrderRef.child("timestamp").setValue(ServerValue.TIMESTAMP);
+
+
+
 
 
 
@@ -27,6 +39,9 @@ public class OrderWriter {
 
             DatabaseReference newOrderItemRef = orderItemsRef.push();
             String orderItemId = newOrderItemRef.getKey();
+
+
+
 
             // Write the orderItem details to the new orderItem node
             newOrderItemRef.child("completed").setValue(orderItem.completed);
@@ -51,4 +66,7 @@ public class OrderWriter {
 
         }
     }
+
+
+
 }

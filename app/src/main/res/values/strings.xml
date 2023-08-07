@@ -51,5 +51,8 @@
     <string name="logout_button">Log Out</string>
     <string name="Fulfill">Fulfill</string>
     <string name="CompleteAll">Fulfill All Orders</string>
+    <string name="Status">Status:</string>
+    <string name="storeName">store_name</string>
+    <string name="Quantity">0</string>
 
 </resources>
