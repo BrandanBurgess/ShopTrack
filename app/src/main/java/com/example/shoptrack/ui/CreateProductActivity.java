@@ -151,6 +151,9 @@ public class CreateProductActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(CreateProductActivity.this, "Product created successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(CreateProductActivity.this, StoreInsideActivity.class);
+                        String productId = ds.getKey();
+                        mDatabase.child("stores").child(ownerId).child("products").child(productId).setValue(true);
+                        product.setProductID(productId);
 
 
                         startActivity(intent);
@@ -164,13 +167,6 @@ public class CreateProductActivity extends AppCompatActivity {
                         Toast.makeText(CreateProductActivity.this, "Product creation failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
-                String productId = ds.getKey();
-                mDatabase.child("stores").child(ownerId).child("products").child(productId).setValue(true);
-                product.setProductID(productId);
-
-
-
 
     }
 }
