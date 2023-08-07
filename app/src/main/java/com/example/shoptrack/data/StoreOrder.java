@@ -11,13 +11,16 @@ import java.util.List;
 
 public class StoreOrder {
 
-    List<OrderItem> orderItems;
+    public List<OrderItem> orderItems;
+
+//    public String orderItemID;
 
     public StoreOrder() {
     }
 
-    public StoreOrder(List<OrderItem> orderItems) {
+    public StoreOrder(List<OrderItem> orderItems, String orderItemID){
         this.orderItems = orderItems;
+//        this.orderItemID = orderItemID;
     }
 
     public List<OrderItem> getOrderItems() {
@@ -27,4 +30,13 @@ public class StoreOrder {
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
     }
+
+//    public String getOrderItemID() {
+//        return orderItemID;
+//    }
+
+//    public void setOrderItemID(String orderItemID) {
+//        this.orderItemID = orderItemID;
+//    }
+
 }
