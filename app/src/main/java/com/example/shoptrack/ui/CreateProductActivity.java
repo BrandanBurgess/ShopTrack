@@ -144,22 +144,33 @@ public class CreateProductActivity extends AppCompatActivity {
         String ownerId = mAuth.getCurrentUser().getUid();
         Product product = new Product(name, price, description, imageUrl, ownerId);
 
-        mDatabase.child("products").push() // Use push() to create a unique id for each product
-                .setValue(product)
+        DatabaseReference ds = mDatabase.child("products").push(); // Use push() to create a unique id for each product
+                ds.setValue(product)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(CreateProductActivity.this, "Product created successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(CreateProductActivity.this, StoreInsideActivity.class);
+
+
                         startActivity(intent);
                         finish();
                     }
                 })
+
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(CreateProductActivity.this, "Product creation failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
+
+                String productId = ds.getKey();
+                mDatabase.child("stores").child(ownerId).child("products").child(productId).setValue(true);
+                product.setProductID(productId);
+
+
+
+
     }
 }
