@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:scrollbars="vertical"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/white"
+    app:strokeColor="@color/dark_blue"
+    app:strokeWidth="0.75dp"
+    app:cardElevation="2dp"
+    android:focusable="true">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+
+        <TextView
+            android:id="@+id/order_name"
+            android:layout_width="193sp"
+            android:layout_height="23sp"
+            android:layout_marginStart="16dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/poppins_bold"
+            android:text="order_name"
+            android:textColor="@color/dark_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.32" />
+
+        <TextView
+            android:id="@+id/order_quantity"
+            android:layout_width="193sp"
+            android:layout_height="23sp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/poppins_regular"
+            android:text="quantity"
+            android:textColor="@color/dark_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.459"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_name"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

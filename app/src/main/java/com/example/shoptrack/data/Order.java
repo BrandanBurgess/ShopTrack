@@ -6,6 +6,7 @@ public class Order {
     private List<OrderItem> order;
     private String userID;
 
+
     public Order() {
     }
 
@@ -28,6 +29,14 @@ public class Order {
 
     public void setUserID(String userID) {
         this.userID = userID;
+    }
+
+    public int getQuantity() {
+        int quantity = 0;
+        for (OrderItem item : order) {
+            quantity += item.getQuantity();
+        }
+        return quantity;
     }
 }
 

@@ -49,4 +49,7 @@
     <string name="description">Description</string>
     <string name="ADD2Cart">ADD</string>
     <string name="logout_button">Log Out</string>
+    <string name="Fulfill">Fulfill</string>
+    <string name="CompleteAll">Fulfill All Orders</string>
+
 </resources>
