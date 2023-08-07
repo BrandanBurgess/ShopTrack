@@ -152,8 +152,9 @@ public class CreateProductActivity extends AppCompatActivity {
                         Toast.makeText(CreateProductActivity.this, "Product created successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(CreateProductActivity.this, StoreInsideActivity.class);
                         String productId = ds.getKey();
-                        mDatabase.child("stores").child(ownerId).child("products").child(productId).setValue(true);
+                        mDatabase.child("products").child(productId).child("productID").setValue(productId);
                         product.setProductID(productId);
+
 
 
                         startActivity(intent);

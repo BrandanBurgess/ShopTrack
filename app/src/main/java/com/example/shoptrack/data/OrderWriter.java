@@ -1,4 +1,6 @@
 package com.example.shoptrack.data;
+import android.util.Log;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -12,6 +14,7 @@ public class OrderWriter {
 
         // Write the order details to the new order node
         newOrderRef.child("userID").setValue(order.getUserID());
+        Log.d("OrderWriter", "writeOrderToFirebase: " + order.getUserID());
 
         // Write the orderItems to the orderItems child node
         DatabaseReference orderItemsRef = newOrderRef.child("orderItems");
@@ -31,6 +34,7 @@ public class OrderWriter {
             productRef.child("description").setValue(orderItem.product.description);
             productRef.child("imageUrl").setValue(orderItem.product.imageUrl);
             productRef.child("ownerId").setValue(orderItem.product.ownerId);
+            productRef.child("productID").setValue(orderItem.product.productID);
         }
     }
 }

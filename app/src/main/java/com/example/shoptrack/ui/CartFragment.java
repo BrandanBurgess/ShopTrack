@@ -102,7 +102,7 @@ public class CartFragment extends Fragment {
                     Toast.makeText(getContext(), "Order Submitted", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(getContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Cart is Empty", Toast.LENGTH_SHORT).show();
                 }
 
 
