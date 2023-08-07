@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.User;
+import com.example.shoptrack.data.UserReference;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -117,5 +118,6 @@ public class Register extends AppCompatActivity {
                         });
             }
         });
+        UserReference user = UserReference.getInstance();
     }
 }
