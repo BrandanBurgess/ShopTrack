@@ -10,12 +10,21 @@ public class OrderWriter {
         DatabaseReference newOrderRef = ordersRef.push();
         String orderId = newOrderRef.getKey();
 
-        // Write the order details to the new order node
+
+
+        //write list of StoreIDs to the new order node
+//        newOrderRef.child("storeIDs").setValue(order.getStoreIDs());
+        newOrderRef.child("StoreIDs").setValue(order.makeOrderIds());
         newOrderRef.child("userID").setValue(order.getUserID());
+
+
 
         // Write the orderItems to the orderItems child node
         DatabaseReference orderItemsRef = newOrderRef.child("orderItems");
         for (OrderItem orderItem : order.getOrder()) {
+            DatabaseReference orderItemToStore = FirebaseDatabase.getInstance().getReference().child("stores").child(orderItem.getStoreID());
+
+
             DatabaseReference newOrderItemRef = orderItemsRef.push();
             String orderItemId = newOrderItemRef.getKey();
 
@@ -32,6 +41,14 @@ public class OrderWriter {
             productRef.child("imageUrl").setValue(orderItem.product.imageUrl);
             productRef.child("ownerId").setValue(orderItem.product.ownerId);
             productRef.child("productID").setValue(orderItem.product.productID);
+
+            //StoreOrder
+            DatabaseReference StoreOrder = FirebaseDatabase.getInstance().getReference().child("StoreOrders");
+            //make each storeID for each orderItem a child of StoreOrder
+            DatabaseReference newStoreOrderRef = StoreOrder.child(orderItem.getStoreID());
+            //write the orderItems from Order to the newStoreOrderRef
+            newStoreOrderRef.child(orderItemId).setValue(orderItem);
+
         }
     }
 }

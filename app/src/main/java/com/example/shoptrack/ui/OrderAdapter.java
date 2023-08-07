@@ -21,6 +21,7 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+import java.util.Map;
 
 public class OrderAdapter extends FirebaseRecyclerAdapter <Order, OrderAdapter.orderViewholder>{
 
@@ -34,28 +35,8 @@ public class OrderAdapter extends FirebaseRecyclerAdapter <Order, OrderAdapter.o
     @Override
 
     protected void onBindViewHolder(@NonNull orderViewholder holder, int position, @NonNull Order model){
-        List <OrderItem> orderItems = model.getOrder();
 
 
-        boolean hasMatchingStore = false;
-        for (OrderItem orderItem : orderItems) {
-            if (orderItem.getStoreID().equals(UserReference.getInstance().getUserID())) {
-                hasMatchingStore = true;
-                break;
-            }
-        }
-
-        if(hasMatchingStore){
-            holder.order_name.setText(model.getUserID());
-        }
-        else{
-            holder.order_name.setText("No orders");
-        }
-
-//        holder.order_name.setText(model.getUserID());
-
-
-        Log.d("OrderAdapter", "onBindViewHolder: " + model.getUserID());
 
 
 

@@ -68,20 +68,22 @@ public class OwnerOrdersFragment extends Fragment {
 
         Log.d("storeID", storeID);
 
-//        Query query = mbase.
+
+        //query to check if storeID contains storeID
+        Query query = mbase;
+        //check if query is empty
 
 
-
-        FirebaseRecyclerOptions<Order> options =
-                new FirebaseRecyclerOptions.Builder<Order>()
-                        .setQuery(mbase, Order.class)
-                        .build();
-
-
-        adapter = new OrderAdapter(options, getParentFragmentManager());
-
-        recyclerView.setAdapter(adapter);
-
+//        FirebaseRecyclerOptions<Order> options =
+//                new FirebaseRecyclerOptions.Builder<Order>()
+//                        .setQuery(query, Order.class)
+//                        .build();
+//
+//
+//        adapter = new OrderAdapter(options, getParentFragmentManager());
+//
+//        recyclerView.setAdapter(adapter);
+//
 
     }
 
