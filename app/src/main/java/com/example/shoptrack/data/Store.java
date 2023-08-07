@@ -7,6 +7,8 @@ public class Store {
     public String description;
     public String imageUrl;
 
+    public List<OrderItem> orderItems;
+
     // Add this constructor
     public Store(String title, String description, String imageUrl) {
         this.title = title;

@@ -2,6 +2,7 @@ package com.example.shoptrack.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,10 +14,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Store;
 import com.example.shoptrack.data.User;
+import com.example.shoptrack.data.UserReference;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,12 +29,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.security.acl.Owner;
+
 public class StoreFragment extends Fragment {
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
     private TextView userRoleText;
-    private Button createStoreButton, addProductButton;
+    private Button createStoreButton, addProductButton, viewOrdersButton;
 
     private TextView storeTitleText, storeDescriptionText;
     private ImageView storeImageView;
@@ -46,6 +52,7 @@ public class StoreFragment extends Fragment {
         userRoleText = view.findViewById(R.id.user_role_text);
         createStoreButton = view.findViewById(R.id.btn_create_store);
         addProductButton = view.findViewById(R.id.btn_add_product);
+        viewOrdersButton = view.findViewById(R.id.storeOwnerViewOrdersButton);
 
         // Initially hide the buttons
         createStoreButton.setVisibility(View.GONE);
@@ -80,10 +87,31 @@ public class StoreFragment extends Fragment {
             }
         });
 
+        viewOrdersButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                //switch to the OwnerOrdersFragment
+                Fragment fragment = OwnerOrdersFragment.newInstance(UserReference.getInstance().getUserID());
+                Log.d("USERID", UserReference.getInstance().getUserID());
+                replaceFragment(fragment);
+            }
+        });
+
         fetchUserRole();
 
         return view;
     }
+
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.myStore_frame, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+
+    }
+
+
 // !
     private void fetchUserRole() {
         mDatabase.child("users").child(mAuth.getCurrentUser().getUid())

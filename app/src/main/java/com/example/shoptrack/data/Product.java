@@ -1,11 +1,15 @@
 package com.example.shoptrack.data;
+
 public class Product {
+
 
     public String name;
     public Double price;
     public String description;
     public String imageUrl;
     public String ownerId;
+
+    public String productID;
 
     public Product() {
     }
@@ -16,6 +20,7 @@ public class Product {
         this.description = description;
         this.imageUrl = imageUrl;
         this.ownerId = ownerId;
+        this.productID = "";
     }
 
     // getters
@@ -58,5 +63,13 @@ public class Product {
 
     public void setOwnerId(String ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getProductID() {
+        return productID;
+    }
+
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 }

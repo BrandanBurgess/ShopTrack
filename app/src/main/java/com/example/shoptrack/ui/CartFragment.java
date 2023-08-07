@@ -23,7 +23,7 @@ import com.example.shoptrack.data.UserReference;
 
 import java.util.List;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartAdapter.TotalUpdateListener{
 
     private Cart cart; // The Cart instance that contains the order items
     private RecyclerView cartRecyclerView;
@@ -38,10 +38,30 @@ public class CartFragment extends Fragment {
         textView.setText(toThis);
     }
 
+    public void updateTotal(View v) {
+        TextView total = (TextView) v.findViewById(R.id.totalTextView);
+        total.setText("Total: $" + cart.getTotal());
+        Log.d("CartFragment", "updateTotal: " + cart.getTotal());
+    }
+
+    public void sendUpdate(View v) {
+        cartAdapter.notifyDataSetChanged();
+    }
+
+    public void onUpdateTotal(String total) {
+        TextView totalTextView = getView().findViewById(R.id.totalTextView);
+        totalTextView.setText(total);
+    }
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        TextView total = view.findViewById(R.id.totalTextView);
 
         // Initialize the RecyclerView and set its layout manager
         cartRecyclerView = view.findViewById(R.id.cartRecyclerView);
@@ -51,7 +71,7 @@ public class CartFragment extends Fragment {
         // Create an instance of the CartAdapter with the order items from the Cart
         cart = Cart.getInstance(); // Assuming Cart is implemented as a singleton
         List<OrderItem> orderItemList = cart.getsCart();
-        cartAdapter = new CartAdapter(orderItemList); // Pass the cart reference here
+        cartAdapter = new CartAdapter(orderItemList, this); // Pass the cart reference here
 
         // Set the CartAdapter to the RecyclerView
         cartRecyclerView.setAdapter(cartAdapter);
@@ -64,27 +84,18 @@ public class CartFragment extends Fragment {
             public void onClick(View v) {
                 // Clear the Cart
                 cart.clearCart();
+                updateTotal(total);
                 cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
             }
         });
 
         //Dynamically Update total textview
-        TextView total = view.findViewById(R.id.totalTextView);
-        total.setText("Total: $" + cart.getTotal());
+//        TextView total = view.findViewById(R.id.totalTextView);
+        updateTotal(view);
         cartAdapter.notifyDataSetChanged();
 
 
-        View addButton = view.findViewById(R.id.button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Add a new OrderItem with product, quantity 0, and storeID = 1 to the Cart
-                Product newProduct = new Product("New Product", 5.0, "yo", "1", "2");
-                OrderItem newOrderItem = new OrderItem(newProduct, 0, "1");
-                cart.addOrderItem(newOrderItem);
-                cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
-            }
-        });
+
 
         View submitButton = view.findViewById(R.id.submit_cart);
 
@@ -101,12 +112,14 @@ public class CartFragment extends Fragment {
                     writer.writeOrderToFirebase(order);
                     //refresh the UI to have the cart be empty
                     cart.clearCart();
+                    updateTotal(total);
+
                     cartAdapter.notifyDataSetChanged();
 
                     Toast.makeText(getContext(), "Order Submitted", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(getContext(), "Cart is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Cart is Empty", Toast.LENGTH_SHORT).show();
                 }
 
 

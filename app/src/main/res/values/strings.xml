@@ -40,7 +40,7 @@
     <string name="add_image">add_image</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="empty_cart">Your cart is empty.</string>
-    <string name="clear_cart">Clear</string>
+    <string name="clear_cart">Clear </string>
     <string name="submit_cart">Submit</string>
     <string name="total">Total:</string>
     <string name="test">+item</string>
@@ -49,4 +49,10 @@
     <string name="description">Description</string>
     <string name="ADD2Cart">ADD</string>
     <string name="logout_button">Log Out</string>
+    <string name="Fulfill">Fulfill</string>
+    <string name="CompleteAll">Fulfill All Orders</string>
+    <string name="Status">Status:</string>
+    <string name="storeName">store_name</string>
+    <string name="Quantity">0</string>
+
 </resources>

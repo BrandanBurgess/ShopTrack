@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.shoptrack.R;
+import com.example.shoptrack.data.UserReference;
 import com.example.shoptrack.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
 

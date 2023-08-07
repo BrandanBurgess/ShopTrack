@@ -1,11 +1,18 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myStore_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.StoreFragment">
+
+
+
+<androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".ui.StoreFragment">
+    android:background="@color/white">
 
     <View
         android:id="@+id/view"
@@ -109,4 +116,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/mystore_banner" />
 
+    <Button
+        android:id="@+id/storeOwnerViewOrdersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/dark_blue"
+        android:fontFamily="@font/poppins_regular"
+        android:text="View Orders"
+        app:layout_constraintBottom_toTopOf="@+id/store_image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

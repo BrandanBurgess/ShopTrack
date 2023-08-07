@@ -1,5 +1,6 @@
 package com.example.shoptrack.ui;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,9 +22,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
     private List<OrderItem> orderItemList;
     public Cart cart;
 
-    public CartAdapter(List<OrderItem> orderItemList) {
+    public View view;
+
+    public TotalUpdateListener totalUpdateListener;
+
+
+
+    public CartAdapter(List<OrderItem> orderItemList, TotalUpdateListener listener) {
         this.orderItemList = orderItemList;
         this.cart = Cart.getInstance();
+        this.totalUpdateListener = listener;
     }
 
     @NonNull
@@ -33,24 +41,35 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
         return new OrderViewHolder(view);
     }
 
+    public void updateTotal() {
+        String total = "Total: $" + cart.getTotal();
+        totalUpdateListener.onUpdateTotal(total);
+    }
+
+
     public void deleteItem(int position) {
         if (orderItemList.size() == 1) {
             cart.clearCart();
-            notifyItemRemoved(position);
         }
         else {
             cart.removeOrderItem(orderItemList.get(position));
-            notifyItemRemoved(position);
         }
+        updateTotal();
+        notifyItemRemoved(position);
     }
 
     public void addItem(int position) {
         OrderItem addingItem = orderItemList.get(position);
         if (addingItem != null) {
             addingItem.setQuantity(addingItem.getQuantity() + 1);
+            updateTotal();
             notifyItemChanged(position);
         }
 
+    }
+
+    public interface TotalUpdateListener {
+        void onUpdateTotal(String total);
     }
 
     public void subtractItem(int position) {
@@ -58,16 +77,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.OrderViewHolde
             OrderItem subtractingItem = orderItemList.get(position);
             if (subtractingItem != null) {
                 subtractingItem.setQuantity(subtractingItem.getQuantity() - 1);
+                updateTotal();
                 notifyItemChanged(position);
                 if (subtractingItem.getQuantity() == 0) {
                     deleteItem(position);
+                    updateTotal();
                     notifyItemChanged(position);
                 }
             }
         }
 
 
+
     }
+
 
 
     @Override

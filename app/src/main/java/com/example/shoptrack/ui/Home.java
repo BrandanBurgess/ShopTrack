@@ -33,18 +33,23 @@ public class Home extends AppCompatActivity {
 
 
             if(item.getItemId() == R.id.nav_home){
+                UserReference fireUser = UserReference.getInstance();
                 replaceFragment(new HomeFragment());
             }
             else if (item.getItemId() == R.id.nav_cart){
+                UserReference fireUser = UserReference.getInstance();
                 replaceFragment(new CartFragment());
             }
             else if (item.getItemId() == R.id.nav_account){
+                UserReference fireUser = UserReference.getInstance();
                 replaceFragment(new AccountFragment());
             }
             else if (item.getItemId() == R.id.nav_mystore){
+                UserReference fireUser = UserReference.getInstance();
                 replaceFragment(new StoreFragment());
             }
             else if (item.getItemId() == R.id.nav_settings){
+                UserReference fireUser = UserReference.getInstance();
                 replaceFragment(new SettingsFragment());
             }
             return true;
