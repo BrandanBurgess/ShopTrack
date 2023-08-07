@@ -116,4 +116,8 @@ public class OrderItem implements Parcelable {
 
         return productID;
     }
+
+    public String getStoreID() {
+        return storeID;
+    }
 }

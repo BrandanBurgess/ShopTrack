@@ -23,8 +23,8 @@
 
         <TextView
             android:id="@+id/order_name"
-            android:layout_width="193sp"
-            android:layout_height="23sp"
+            android:layout_width="261dp"
+            android:layout_height="26dp"
             android:layout_marginStart="16dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/poppins_bold"
@@ -37,22 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.32" />
 
-        <TextView
-            android:id="@+id/order_quantity"
-            android:layout_width="193sp"
-            android:layout_height="23sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:autoSizeTextType="uniform"
-            android:fontFamily="@font/poppins_regular"
-            android:text="quantity"
-            android:textColor="@color/dark_blue"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.459"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/order_name"
-            app:layout_constraintVertical_bias="0.0" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

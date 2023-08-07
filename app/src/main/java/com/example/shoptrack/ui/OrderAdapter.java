@@ -13,10 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Order;
+import com.example.shoptrack.data.OrderItem;
 import com.example.shoptrack.data.Store;
+import com.example.shoptrack.data.UserReference;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.squareup.picasso.Picasso;
+
+import java.util.List;
 
 public class OrderAdapter extends FirebaseRecyclerAdapter <Order, OrderAdapter.orderViewholder>{
 
@@ -30,10 +34,29 @@ public class OrderAdapter extends FirebaseRecyclerAdapter <Order, OrderAdapter.o
     @Override
 
     protected void onBindViewHolder(@NonNull orderViewholder holder, int position, @NonNull Order model){
-        holder.order_name.setText(model.getUserID());
-        holder.order_quantity.setText(model.getQuantity());
+        List <OrderItem> orderItems = model.getOrder();
 
-        Log.d("OrderAdapter", "onBindViewHolder: " + model.getUserID() + " " + model.getQuantity());
+
+        boolean hasMatchingStore = false;
+        for (OrderItem orderItem : orderItems) {
+            if (orderItem.getStoreID().equals(UserReference.getInstance().getUserID())) {
+                hasMatchingStore = true;
+                break;
+            }
+        }
+
+        if(hasMatchingStore){
+            holder.order_name.setText(model.getUserID());
+        }
+        else{
+            holder.order_name.setText("No orders");
+        }
+
+//        holder.order_name.setText(model.getUserID());
+
+
+        Log.d("OrderAdapter", "onBindViewHolder: " + model.getUserID());
+
 
 
 //        holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +93,6 @@ public class OrderAdapter extends FirebaseRecyclerAdapter <Order, OrderAdapter.o
         public orderViewholder(@NonNull View itemView){
             super(itemView);
             order_name = itemView.findViewById(R.id.order_name);
-            order_quantity = itemView.findViewById(R.id.order_quantity);
 
         }
     }

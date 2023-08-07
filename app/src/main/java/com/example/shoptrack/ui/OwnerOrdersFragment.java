@@ -30,7 +30,7 @@ public class OwnerOrdersFragment extends Fragment {
 
     public RecyclerView recyclerView;
 
-    OrderAdapter adapter;
+    public OrderAdapter adapter;
 
     DatabaseReference mbase;
 
@@ -64,27 +64,23 @@ public class OwnerOrdersFragment extends Fragment {
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
-//        Log.d("storeID", "storeID: " + storeID);
-
         storeID = getArguments().getString("storeID");
 
         Log.d("storeID", storeID);
 
-
-        Query query = mbase.orderByChild("storeID").equalTo(storeID);
+//        Query query = mbase.
 
 
 
         FirebaseRecyclerOptions<Order> options =
                 new FirebaseRecyclerOptions.Builder<Order>()
-                        .setQuery(query, Order.class)
+                        .setQuery(mbase, Order.class)
                         .build();
+
 
         adapter = new OrderAdapter(options, getParentFragmentManager());
 
         recyclerView.setAdapter(adapter);
-
-
 
 
     }
