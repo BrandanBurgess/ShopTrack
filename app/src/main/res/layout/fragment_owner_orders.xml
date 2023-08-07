@@ -36,7 +36,7 @@
 
 
         <Button
-            android:id="@+id/submit_cart"
+            android:id="@+id/fulfill_all_button"
             android:layout_width="wrap_content"
             android:layout_height="68sp"
             android:layout_marginBottom="16dp"

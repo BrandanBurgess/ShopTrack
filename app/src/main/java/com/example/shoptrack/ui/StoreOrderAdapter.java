@@ -15,6 +15,7 @@ import com.example.shoptrack.R;
 import com.example.shoptrack.data.Order;
 import com.example.shoptrack.data.OrderItem;
 import com.example.shoptrack.data.Store;
+import com.example.shoptrack.data.StoreOrder;
 import com.example.shoptrack.data.UserReference;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -23,57 +24,52 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 import java.util.Map;
 
-public class OrderAdapter extends FirebaseRecyclerAdapter <Order, OrderAdapter.orderViewholder>{
+public class StoreOrderAdapter extends FirebaseRecyclerAdapter <OrderItem, StoreOrderAdapter.orderItemViewholder>{
 
     private FragmentManager fragmentManager;
 
-    public OrderAdapter(@NonNull FirebaseRecyclerOptions<Order> options, FragmentManager fragmentManager) {
+    public StoreOrderAdapter(@NonNull FirebaseRecyclerOptions<OrderItem> options, FragmentManager fragmentManager) {
         super(options);
         this.fragmentManager = fragmentManager;
     }
 
     @Override
+    protected void onBindViewHolder(@NonNull orderItemViewholder holder, int position, @NonNull OrderItem model){
 
-    protected void onBindViewHolder(@NonNull orderViewholder holder, int position, @NonNull Order model){
-
-
-
-
-
-//        holder.itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//
-//            }
-//        });
+        holder.order_name.setText(model.product.name);
+        holder.order_ID.setText(model.product.productID);
+        Picasso.get().load(model.product.imageUrl).into(holder.order_image);
 
     }
 
-//    private void replaceFragment(Fragment fragment){
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        fragmentTransaction.replace(R.id.owner_orders_frame, fragment);
-//        fragmentTransaction.addToBackStack(null);
-//        fragmentTransaction.commit();
-//
-//    }
+
+    public void deleteItem(int position){
+        getSnapshots().getSnapshot(position).getRef().removeValue();
+    }
+
+
+
 
     @NonNull
     @Override
-    public orderViewholder onCreateViewHolder(@NonNull ViewGroup parent,
+    public orderItemViewholder onCreateViewHolder(@NonNull ViewGroup parent,
                                               int viewType)
     {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.order, parent, false);
 
-        return new OrderAdapter.orderViewholder(view);
+        return new StoreOrderAdapter.orderItemViewholder(view);
     }
 
-    class orderViewholder extends RecyclerView.ViewHolder{
-        TextView order_name, order_quantity;
+    class orderItemViewholder extends RecyclerView.ViewHolder{
+        TextView order_name, order_ID;
 
-        public orderViewholder(@NonNull View itemView){
+        ImageView order_image;
+
+        public orderItemViewholder(@NonNull View itemView){
             super(itemView);
             order_name = itemView.findViewById(R.id.order_name);
+            order_ID = itemView.findViewById(R.id.order_ID);
+            order_image = itemView.findViewById(R.id.order_image);
 
         }
     }
