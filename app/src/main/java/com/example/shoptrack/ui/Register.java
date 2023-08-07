@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.example.shoptrack.R;
 import com.example.shoptrack.firebase.FirebaseUserManager;
 import com.example.shoptrack.utils.DBConnection;
+import com.example.shoptrack.utils.DBUtil;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,7 +27,6 @@ public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
-    FirebaseAuth mAuth;
 
     DatabaseReference mDatabase;
     ProgressBar progressBar;
@@ -41,7 +41,7 @@ public class Register extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = DBUtil.getCurrentUser();
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(intent);
@@ -57,7 +57,6 @@ public class Register extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
 
         editTextEmail = findViewById(R.id.email);
@@ -106,30 +105,6 @@ public class Register extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     });
                 });
-
-                /*
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    User user = new User(email, userRole);
-                                    mDatabase.child(mAuth.getCurrentUser().getUid()).setValue(user);
-
-                                    Toast.makeText(Register.this, "Account created",
-                                            Toast.LENGTH_SHORT).show();
-
-                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Register.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                */
             }
         });
     }

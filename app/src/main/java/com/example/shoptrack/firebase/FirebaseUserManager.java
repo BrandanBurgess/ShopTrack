@@ -2,7 +2,6 @@ package com.example.shoptrack.firebase;
 
 import com.example.shoptrack.data.User;
 import com.example.shoptrack.managers.UserManager;
-import com.example.shoptrack.utils.DBConnection;
 import com.example.shoptrack.utils.DBUtil;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

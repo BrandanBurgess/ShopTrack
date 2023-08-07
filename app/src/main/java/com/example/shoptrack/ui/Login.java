@@ -14,15 +14,14 @@ import android.widget.Toast;
 import com.example.shoptrack.R;
 import com.example.shoptrack.firebase.FirebaseUserManager;
 import com.example.shoptrack.utils.DBConnection;
+import com.example.shoptrack.utils.DBUtil;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonLogin;
-    FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
     FirebaseUserManager userManager = DBConnection.getInstance().getUserManager();
@@ -31,7 +30,7 @@ public class Login extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = DBUtil.getCurrentUser();
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(intent);
@@ -47,7 +46,6 @@ public class Login extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
         buttonLogin = findViewById(R.id.signup_btn_signup);
