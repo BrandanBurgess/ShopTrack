@@ -23,7 +23,7 @@ import com.example.shoptrack.data.UserReference;
 
 import java.util.List;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements CartAdapter.TotalUpdateListener{
 
     private Cart cart; // The Cart instance that contains the order items
     private RecyclerView cartRecyclerView;
@@ -44,10 +44,24 @@ public class CartFragment extends Fragment {
         Log.d("CartFragment", "updateTotal: " + cart.getTotal());
     }
 
+    public void sendUpdate(View v) {
+        cartAdapter.notifyDataSetChanged();
+    }
+
+    public void onUpdateTotal(String total) {
+        TextView totalTextView = getView().findViewById(R.id.totalTextView);
+        totalTextView.setText(total);
+    }
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
+
+        TextView total = view.findViewById(R.id.totalTextView);
 
         // Initialize the RecyclerView and set its layout manager
         cartRecyclerView = view.findViewById(R.id.cartRecyclerView);
@@ -57,7 +71,7 @@ public class CartFragment extends Fragment {
         // Create an instance of the CartAdapter with the order items from the Cart
         cart = Cart.getInstance(); // Assuming Cart is implemented as a singleton
         List<OrderItem> orderItemList = cart.getsCart();
-        cartAdapter = new CartAdapter(orderItemList); // Pass the cart reference here
+        cartAdapter = new CartAdapter(orderItemList, this); // Pass the cart reference here
 
         // Set the CartAdapter to the RecyclerView
         cartRecyclerView.setAdapter(cartAdapter);
@@ -70,6 +84,7 @@ public class CartFragment extends Fragment {
             public void onClick(View v) {
                 // Clear the Cart
                 cart.clearCart();
+                updateTotal(total);
                 cartAdapter.notifyDataSetChanged(); // Notify the adapter of data change
             }
         });
@@ -78,6 +93,7 @@ public class CartFragment extends Fragment {
 //        TextView total = view.findViewById(R.id.totalTextView);
         updateTotal(view);
         cartAdapter.notifyDataSetChanged();
+
 
 
 
