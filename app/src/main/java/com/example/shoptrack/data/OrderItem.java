@@ -36,7 +36,6 @@ public class OrderItem implements Parcelable {
     public int quantity;
     public boolean completed;
     public String storeID;
-    public String productID;
 
 
     public OrderItem() {
@@ -111,13 +110,11 @@ public class OrderItem implements Parcelable {
                 storeID.equals(orderItem.storeID);
     }
 
-    public String getProductID() {
-
-        return productID;
-    }
 
 
     public String getStoreID() {
         return storeID;
     }
+
+
 }

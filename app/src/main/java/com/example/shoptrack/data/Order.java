@@ -8,10 +8,7 @@ import java.util.Map;
 public class Order {
     public List<OrderItem> orderItems;
 
-    //make orderItems a hashmap with storeID as key and orderItem as value
-
-    Map<String, OrderItem> orderItemMap = new HashMap<>();
-
+    public String timestamp;
     public String userID;
 
 
@@ -21,7 +18,6 @@ public class Order {
     public Order (List<OrderItem> order, String userID) {
         this.orderItems = order;
         this.userID = userID;
-        makeOrderItemsMap();
     }
 
     public List<OrderItem> getOrder() {
@@ -52,17 +48,6 @@ public class Order {
         return storeIDs;
         }
 
-
-    public void makeOrderItemsMap() {
-        for (OrderItem orderItem : orderItems) {
-            orderItemMap.put(orderItem.getStoreID(), orderItem);
-        }
-    }
-
-    public Map<String, OrderItem> getOrderItemsMap() {
-        return orderItemMap;
-    }
-
     public String makeOrderIds() {
         String orderIds = "";
         for (OrderItem orderItem : orderItems) {
@@ -70,6 +55,7 @@ public class Order {
         }
         return orderIds;
     }
+
 
     }
 
