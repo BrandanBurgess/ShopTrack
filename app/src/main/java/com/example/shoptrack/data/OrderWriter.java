@@ -76,7 +76,7 @@ public class OrderWriter {
             DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
             DatabaseReference userOrdersRef = userRef.child("userOrders");
             //Create new key for the orderItem
-            DatabaseReference newUserOrderRef = userOrdersRef.push();
+            DatabaseReference newUserOrderRef = userOrdersRef.child(orderItemId);
             //Write the orderItemPlus from Order to the newUserOrderRef
             newUserOrderRef.setValue(orderItemPlus);
 
