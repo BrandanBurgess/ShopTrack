@@ -15,13 +15,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/shopper_order_recycler_view"
             android:layout_width="413dp"
-            android:layout_height="616dp"
-            android:background="@color/light_blue"
+            android:layout_height="530dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.444"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            app:layout_constraintVertical_bias="0.618" />
 
         <ImageView
             android:id="@+id/imageView6"
@@ -33,7 +33,6 @@
             app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View

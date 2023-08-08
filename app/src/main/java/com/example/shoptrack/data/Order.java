@@ -1,6 +1,8 @@
 package com.example.shoptrack.data;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +10,10 @@ import java.util.Map;
 public class Order {
     public List<OrderItem> orderItems;
 
-    public String timestamp;
+    public long timestamp;
     public String userID;
+
+    public String orderID;
 
 
     public Order() {
@@ -56,8 +60,26 @@ public class Order {
         return orderIds;
     }
 
-
+    public String getOrderID() {
+        return orderID;
     }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+
+
+
+}
 
 
 

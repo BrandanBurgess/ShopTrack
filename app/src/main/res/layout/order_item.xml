@@ -33,7 +33,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.125"
-            app:layout_constraintStart_toEndOf="@+id/order_product_image"
+            app:layout_constraintStart_toEndOf="@+id/shopper_order_image"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.28" />
 
@@ -50,12 +50,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.119"
-            app:layout_constraintStart_toEndOf="@+id/order_product_image"
+            app:layout_constraintStart_toEndOf="@+id/shopper_order_image"
             app:layout_constraintTop_toBottomOf="@+id/order_product_name"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/order_product_image"
+            android:id="@+id/shopper_order_image"
             android:layout_width="75dp"
             android:layout_height="45dp"
             app:layout_constraintBottom_toBottomOf="parent"

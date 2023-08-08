@@ -2,46 +2,47 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shopper_order_item"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
     android:clickable="true"
+    android:focusable="true"
     android:scrollbars="vertical"
-    app:cardCornerRadius="20dp"
     app:cardBackgroundColor="@color/white"
-    app:strokeColor="@color/dark_blue"
-    app:strokeWidth="0.75dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="2dp"
-    android:focusable="true">
+    app:strokeColor="@color/dark_blue"
+    app:strokeWidth="0.75dp">
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="73dp">
+        android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/store_name"
-            android:layout_width="124dp"
+            android:id="@+id/shopper_order_quantity"
+            android:layout_width="33dp"
             android:layout_height="21dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="156dp"
+            android:layout_marginTop="1dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/storeName"
+            android:text="@string/Quantity"
             android:textColor="@color/dark_blue"
-            android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/order_product_image"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.76" />
+            app:layout_constraintEnd_toStartOf="@+id/status_image"
+            app:layout_constraintHorizontal_bias="0.839"
+            app:layout_constraintStart_toEndOf="@+id/shopper_order_image"
+            app:layout_constraintTop_toBottomOf="@+id/shopper_order_price"
+            app:layout_constraintVertical_bias="1.0" />
 
         <ImageView
             android:id="@+id/status_image"
-            android:layout_width="75dp"
-            android:layout_height="45dp"
+            android:layout_width="51dp"
+            android:layout_height="37dp"
             android:layout_marginEnd="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,23 +50,25 @@
             app:srcCompat="@drawable/baseline_storefront_24" />
 
         <TextView
-            android:id="@+id/shopper_quantity_ordered"
-            android:layout_width="53dp"
-            android:layout_height="28dp"
+            android:id="@+id/shopper_order_price"
+            android:layout_width="42dp"
+            android:layout_height="23dp"
             android:layout_marginStart="156dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/poppins_bold"
-            android:text="@string/Quantity"
+            android:text="@string/price"
             android:textColor="@color/dark_blue"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/order_product_image"
+            app:layout_constraintEnd_toStartOf="@+id/status_image"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/shopper_order_image"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.844" />
+            app:layout_constraintVertical_bias="0.56" />
 
         <TextView
             android:id="@+id/order_product_name"
-            android:layout_width="193sp"
-            android:layout_height="23sp"
+            android:layout_width="220dp"
+            android:layout_height="37dp"
             android:layout_marginStart="16dp"
             android:autoSizeTextType="uniform"
             android:fontFamily="@font/poppins_bold"
@@ -74,12 +77,12 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/order_product_image"
+            app:layout_constraintStart_toEndOf="@+id/shopper_order_image"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.28" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/order_product_image"
+            android:id="@+id/shopper_order_image"
             android:layout_width="75dp"
             android:layout_height="45dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -88,6 +91,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/baseline_storefront_24" />
+
+        <TextView
+            android:id="@+id/orderID"
+            android:layout_width="165dp"
+            android:layout_height="19dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="12dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/order_id"
+            android:textColor="@color/dark_blue"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/shopper_order_image" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

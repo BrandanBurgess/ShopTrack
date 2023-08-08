@@ -28,30 +28,44 @@ import com.example.shoptrack.data.Product;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 
-
-public class OrderItem implements Parcelable {
+public class OrderItemPlus implements Parcelable {
     public Product product;
     public int quantity;
     public boolean completed;
     public String storeID;
 
+    public String orderID;
+
+    public long timestamp;
 
 
 
 
-    public OrderItem() {
+    public OrderItemPlus() {
     }
 
-    public OrderItem(Product product, int quantity, String storeID) {
+    public OrderItemPlus(Product product, int quantity, String storeID) {
         this.product = product;
         this.quantity = quantity;
         this.storeID = storeID;
         this.completed = false;
     }
 
-    protected OrderItem(Parcel in) {
+    public OrderItemPlus(OrderItem orderItem, long timestamp, String orderID){
+        this.product = orderItem.product;
+        this.quantity = orderItem.quantity;
+        this.storeID = orderItem.storeID;
+        this.completed = orderItem.completed;
+        this.timestamp = timestamp;
+        this.orderID = orderID;
+    }
+
+    protected OrderItemPlus(Parcel in) {
         product = in.readParcelable(Product.class.getClassLoader());
         quantity = in.readInt();
         completed = in.readByte() != 0;
@@ -131,4 +145,29 @@ public class OrderItem implements Parcelable {
     public void setCompletion(boolean completion) {
     }
 
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public static String convertTimestampToReadable(long timestampMillis) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date(timestampMillis);
+        return sdf.format(date);
+    }
+
+    public boolean isCompleted() {
+        return this.completed;
+    }
 }

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shopper_order"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:scrollbars="vertical"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/dark_blue"
+    app:strokeWidth="0.75dp">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="73dp">
+
+        <TextView
+            android:id="@+id/shopper_order_timestamp"
+            android:layout_width="124dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="4dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/order_timestamp"
+            android:textColor="@color/dark_blue"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.223"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/shopper_order_id" />
+
+        <TextView
+            android:id="@+id/shopper_order_id"
+            android:layout_width="231dp"
+            android:layout_height="29dp"
+            android:autoSizeTextType="uniform"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/order_id"
+            android:textColor="@color/dark_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.376"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.28" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>
