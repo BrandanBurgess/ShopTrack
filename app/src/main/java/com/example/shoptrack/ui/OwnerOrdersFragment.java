@@ -122,20 +122,20 @@ public class OwnerOrdersFragment extends Fragment {
                         // Update the orderItem in StoreOrders
                         orderItemsRef.child(key).child("completed").setValue(true);
 
-
                         // Get the orderID of the orderItem from the database
-                        DatabaseReference orderIDRef = orderItemsRef.child(key).child("orderID");
-                        orderIDRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        DatabaseReference userIDRef = orderItemsRef.child(key).child("userID");
+                        userIDRef.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
                                 if (snapshot.exists()) {
-                                    String orderID = snapshot.getValue(String.class);
-                                    Log.d("ORDERID", orderID);
+
+                                    String userID = snapshot.getValue(String.class);
+                                    Log.d("ORDERID", userID);
 
                                     // Update the completed field for the corresponding orderItem in orders
-                                    DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("orders").child(orderID).child("orderItems");
-
-                                    orderRef.addListenerForSingleValueEvent(new ValueEventListener() {
+//                                    DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("orders").child(orderID).child("orderItems");
+                                    DatabaseReference newOrderRef  = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("userOrders");
+                                    newOrderRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                                             // go to each orderItem whos key is the same as the key of the orderItem in StoreOrders\
@@ -144,7 +144,7 @@ public class OwnerOrdersFragment extends Fragment {
                                                 String orderItemKey = orderItemSnapshot.getKey();
                                                 Log.d("ORDERITEMKEY", orderItemKey);
                                                 if (orderItemKey.equals(key)) {
-                                                    orderRef.child(orderItemKey).child("completed").setValue(true);
+                                                    newOrderRef.child(orderItemKey).child("completed").setValue(true);
                                                 }
                                             }
                                         }

@@ -69,6 +69,7 @@ public class OrderWriter {
             //write the orderID to the newStoreOrderRef
             Log.d("ORDERID", orderId);
             newStoreOrderRef.child(orderItemId).child("orderID").setValue(orderId);
+            newStoreOrderRef.child(orderItemId).child("userID").setValue(UserReference.getInstance().getUserID());
 
 
             OrderItemPlus orderItemPlus = new OrderItemPlus(orderItem,timestamp, orderId);
