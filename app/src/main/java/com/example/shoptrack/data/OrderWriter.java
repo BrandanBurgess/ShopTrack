@@ -1,4 +1,6 @@
 package com.example.shoptrack.data;
+import android.util.Log;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
@@ -21,14 +23,9 @@ public class OrderWriter {
 
         //write list of StoreIDs to the new order node
 //        newOrderRef.child("storeIDs").setValue(order.getStoreIDs());
-        newOrderRef.child("StoreIDs").setValue(order.makeOrderIds());
         newOrderRef.child("userID").setValue(order.getUserID());
         // Add a timestamp field using ServerValue.TIMESTAMP
         newOrderRef.child("timestamp").setValue(ServerValue.TIMESTAMP);
-
-
-
-
 
 
         // Write the orderItems to the orderItems child node
@@ -63,6 +60,9 @@ public class OrderWriter {
             DatabaseReference newStoreOrderRef = StoreOrder.child(orderItem.getStoreID());
             //write the orderItems from Order to the newStoreOrderRef
             newStoreOrderRef.child(orderItemId).setValue(orderItem);
+            //write the orderID to the newStoreOrderRef
+            Log.d("ORDERID", orderId);
+            newStoreOrderRef.child(orderItemId).child("orderID").setValue(orderId);
 
         }
     }
