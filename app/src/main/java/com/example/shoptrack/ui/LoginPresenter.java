@@ -1,5 +1,7 @@
 package com.example.shoptrack.ui;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 public class LoginPresenter {
     Login view;
     LoginModel model;
@@ -21,7 +23,14 @@ public class LoginPresenter {
         }
 
         showSpinner(true);
-        model.login(this, email, password);
+        AtomicBoolean success = model.login(this, email, password);
+        showSpinner(false);
+        if (success.get()) {
+            sendNotifyMessage("Login Successful");
+            navigateToHome();
+        } else {
+            sendNotifyMessage("Authentication failed.");
+        }
     }
 
     public void sendNotifyMessage(String message) {
