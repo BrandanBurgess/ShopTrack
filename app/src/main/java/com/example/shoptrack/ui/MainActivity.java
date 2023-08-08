@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Login.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
         register_btn.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Register.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
-                finish();
+                //finish();
             }
         });
 
