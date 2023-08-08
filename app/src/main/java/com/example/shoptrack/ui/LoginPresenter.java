@@ -23,14 +23,16 @@ public class LoginPresenter {
         }
 
         showSpinner(true);
-        AtomicBoolean success = model.login(this, email, password);
-        showSpinner(false);
-        if (success.get()) {
-            sendNotifyMessage("Login Successful");
-            navigateToHome();
-        } else {
-            sendNotifyMessage("Authentication failed.");
-        }
+
+        model.login(email, password).thenAccept(loginSuccess -> {
+            showSpinner(false);
+            if (loginSuccess) {
+                sendNotifyMessage("Login Successful");
+                navigateToHome();
+            } else {
+                sendNotifyMessage("Authentication failed.");
+            }
+        });
     }
 
     public void sendNotifyMessage(String message) {

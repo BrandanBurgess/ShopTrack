@@ -15,6 +15,7 @@ import com.example.shoptrack.ui.Login;
 import com.example.shoptrack.ui.LoginModel;
 import com.example.shoptrack.ui.LoginPresenter;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -38,7 +39,8 @@ public class ExampleUnitTest {
 	@Test
 	public void testLoginSuccess() {
 		LoginPresenter presenter = new LoginPresenter(view, model);
-		when(model.login(presenter, "admin@shoptrack.com", "password")).thenReturn(new AtomicBoolean(true));
+		CompletableFuture<Boolean> loginResult = CompletableFuture.completedFuture(true);
+		when(model.login("admin@shoptrack.com", "password")).thenReturn(loginResult);
 		presenter.login("admin@shoptrack.com", "password"); // change the credentials to test
 		verify(view).showProgressBar();
 		verify(view).hideProgressBar();
@@ -50,7 +52,8 @@ public class ExampleUnitTest {
 	@Test
 	public void testLoginFail() {
 		LoginPresenter presenter = new LoginPresenter(view, model);
-		when(model.login(presenter, "ntr@ntr.com", "lmaoooo")).thenReturn(new AtomicBoolean(false));
+		CompletableFuture<Boolean> loginResult = CompletableFuture.completedFuture(false);
+		when(model.login("ntr@ntr.com", "lmaoooo")).thenReturn(loginResult);
 		presenter.login("ntr@ntr.com", "lmaoooo"); // change the credentials to test
 		verify(view).showProgressBar();
 		verify(view).hideProgressBar();
