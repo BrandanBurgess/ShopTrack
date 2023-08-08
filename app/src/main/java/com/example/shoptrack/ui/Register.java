@@ -1,6 +1,5 @@
 package com.example.shoptrack.ui;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,11 +14,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.shoptrack.R;
-import com.example.shoptrack.data.User;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.example.shoptrack.firebase.FirebaseUserManager;
+import com.example.shoptrack.utils.DBConnection;
+import com.example.shoptrack.utils.DBUtil;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +27,6 @@ public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
     Button buttonReg;
-    FirebaseAuth mAuth;
 
     DatabaseReference mDatabase;
     ProgressBar progressBar;
@@ -38,11 +35,13 @@ public class Register extends AppCompatActivity {
 
     RadioGroup radioGroup;
 
+    FirebaseUserManager userManager = DBConnection.getInstance().getUserManager();
+
     @Override
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        FirebaseUser currentUser = DBUtil.getCurrentUser();
         if(currentUser != null){
             Intent intent = new Intent(getApplicationContext(), Home.class);
             startActivity(intent);
@@ -54,8 +53,10 @@ public class Register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
 
-        mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("users");
 
         editTextEmail = findViewById(R.id.email);
@@ -91,27 +92,19 @@ public class Register extends AppCompatActivity {
                     return;
                 }
 
-                mAuth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                progressBar.setVisibility(View.GONE);
-                                if (task.isSuccessful()) {
-                                    User user = new User(email, userRole);
-                                    mDatabase.child(mAuth.getCurrentUser().getUid()).setValue(user);
+                userManager.signUp(email, password, userRole, result -> {
+                    result.onSuccess(user -> {
+                        Toast.makeText(Register.this, "Account created",
+                                Toast.LENGTH_SHORT).show();
 
-                                    Toast.makeText(Register.this, "Account created",
-                                            Toast.LENGTH_SHORT).show();
-
-                                    Intent intent = new Intent(getApplicationContext(), Login.class);
-                                    startActivity(intent);
-                                    finish();
-                                } else {
-                                    Toast.makeText(Register.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
+                        Intent intent = new Intent(getApplicationContext(), Login.class);
+                        startActivity(intent);
+                        finish();
+                    }).onFailure(error -> {
+                        Toast.makeText(Register.this, "Authentication failed.",
+                                Toast.LENGTH_SHORT).show();
+                    });
+                });
             }
         });
     }
