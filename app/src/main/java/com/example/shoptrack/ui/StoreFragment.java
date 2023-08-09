@@ -157,6 +157,7 @@ public class StoreFragment extends Fragment {
                                     storeImageView.setVisibility(View.GONE);
                                     createStoreButton.setVisibility(View.GONE);
                                     addProductButton.setVisibility(View.GONE);
+                                    viewOrdersButton.setVisibility(View.GONE); // If shopper, hide the View Orders button
                                 }
                             }
                         }
