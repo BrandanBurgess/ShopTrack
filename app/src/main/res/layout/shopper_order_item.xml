@@ -63,7 +63,7 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/shopper_order_image"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.56" />
+            app:layout_constraintVertical_bias="0.686" />
 
         <TextView
             android:id="@+id/order_product_name"
@@ -103,7 +103,7 @@
             android:fontFamily="@font/poppins_bold"
             android:text="@string/order_id"
             android:textColor="@color/dark_blue"
-            android:textSize="4sp"
+            android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
