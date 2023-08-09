@@ -2,6 +2,7 @@ package com.example.shoptrack.ui;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,7 +15,14 @@ import android.view.ViewGroup;
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.OrderItemPlus;
 import com.example.shoptrack.data.ShopperOrder;
+import com.example.shoptrack.data.UserReference;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AccountFragment extends Fragment {
@@ -41,8 +49,11 @@ public class AccountFragment extends Fragment {
 
 
         sOrder = ShopperOrder.getInstance(); // Assuming ShopperOrder is implemented as a singleton
-        List<OrderItemPlus> orderItemList = sOrder.getOrdersList();
-        adapter = new ShopperOrderAdapter(orderItemList); // Pass the cart reference here
+
+
+        List<OrderItemPlus> ordersList = sOrder.getOrdersList();
+        // Initialize the CartAdapter for RecyclerView
+        adapter = new ShopperOrderAdapter(ordersList); // Pass the cart reference here
 
         // Set the CartAdapter to the RecyclerView
         recyclerView.setAdapter(adapter);
@@ -61,5 +72,12 @@ public class AccountFragment extends Fragment {
     public void onStop() {
         super.onStop();
         adapter.stopListening(); // Stop listening for changes
+    }
+
+    public void setArray(List<OrderItemPlus> destList, List<OrderItemPlus> sourceList) {
+        destList.clear();
+        for (OrderItemPlus order : sourceList) {
+            destList.add(order);
+        }
     }
 }

@@ -17,7 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class UserReference {
 
-    private static UserReference instance1 = null;
+    public static UserReference instance1 = null;
     public String userID;
     public String our_email;
 

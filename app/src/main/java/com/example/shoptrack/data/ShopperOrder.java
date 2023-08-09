@@ -30,8 +30,6 @@ public class ShopperOrder {
     public static ShopperOrder instance3;
 
     public ShopperOrder() {
-        ordersList = new ArrayList<>();
-
         UserReference user = UserReference.getInstance();
         String uID = user.getUserID();
 

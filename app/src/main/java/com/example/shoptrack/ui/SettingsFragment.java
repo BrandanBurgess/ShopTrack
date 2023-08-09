@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.shoptrack.R;
+import com.example.shoptrack.data.ShopperOrder;
 import com.example.shoptrack.data.UserReference;
 import com.example.shoptrack.ui.MainActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -44,6 +45,8 @@ public class SettingsFragment extends Fragment {
         logout_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                UserReference.instance1 = null;
+                ShopperOrder.instance3 = null;
                 FirebaseAuth.getInstance().signOut();
 
                 // After logging out, redirect to MainActivity
