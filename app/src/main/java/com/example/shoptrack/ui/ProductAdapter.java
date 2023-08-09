@@ -20,17 +20,24 @@ import java.util.List;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Product> productList;
+    private final ProductActionListener mListener;
 
-    public ProductAdapter(List<Product> productList) {
+
+
+    public ProductAdapter(List<Product> productList, ProductActionListener listener) {
         this.productList = productList;
+        this.mListener = listener;
     }
+
+
+
 
     @NonNull
     @Override
     public ProductViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_product, parent, false);
-        return new ProductViewHolder(itemView);
+        return new ProductViewHolder(itemView, productList, mListener);
     }
 
     @Override
@@ -73,13 +80,44 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         TextView productPriceTextView;
         TextView productDescriptionTextView;
         ImageView productImageView;
+        ImageView editButton;
+        ImageView deleteButton;
 
-        ProductViewHolder(View itemView) {
+        ProductActionListener mListener;
+        List<Product> productList;
+
+        ProductViewHolder(View itemView, List<Product> productList, ProductActionListener listener)  {
             super(itemView);
+            this.productList = productList;
+            this.mListener = listener;
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
             productDescriptionTextView = itemView.findViewById(R.id.productDescriptionTextView);
             productImageView = itemView.findViewById(R.id.productImageView);
+            //editButton = itemView.findViewById(R.id.editButton);
+            deleteButton = itemView.findViewById(R.id.deleteButton);
+
+            // Set the click listener for the edit button
+    /*        editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && mListener != null) {
+                        mListener.onEditProduct(productList.get(position));
+                    }
+                }
+            });*/
+
+            // Set the click listener for the delete button
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && mListener != null) {
+                        mListener.onDeleteProduct(productList.get(position));
+                    }
+                }
+            });
         }
     }
 }

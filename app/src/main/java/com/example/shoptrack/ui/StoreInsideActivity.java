@@ -24,7 +24,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreInsideActivity extends AppCompatActivity {
+public class StoreInsideActivity extends AppCompatActivity implements ProductActionListener {
+
 
     private FirebaseAuth mAuth;
     private DatabaseReference mDatabase;
@@ -45,7 +46,7 @@ public class StoreInsideActivity extends AppCompatActivity {
 
         productRecyclerView = findViewById(R.id.product_recycler_view);
         productRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        productAdapter = new ProductAdapter(productList);
+        productAdapter = new ProductAdapter(productList, this);
         productRecyclerView.setAdapter(productAdapter);
 
         createProductButton = findViewById(R.id.btn_create_product);
@@ -62,6 +63,24 @@ public class StoreInsideActivity extends AppCompatActivity {
                 Intent intent = new Intent(StoreInsideActivity.this, CreateProductActivity.class);
                 startActivity(intent);
             }
+        });
+    }
+
+ /*   @Override
+    public void onEditProduct(Product product) {
+        Intent intent = new Intent(this, CreateProductActivity.class);
+        intent.putExtra("PRODUCT", product);  // Make sure your Product class implements Parcelable
+        startActivity(intent);
+    }*/
+
+    @Override
+    public void onDeleteProduct(Product product) {
+        // Delete the product from the Firebase database
+        DatabaseReference productRef = mDatabase.child("products").child(product.getProductID());
+        productRef.removeValue().addOnSuccessListener(aVoid -> {
+            Toast.makeText(this, "Product deleted successfully", Toast.LENGTH_SHORT).show();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(this, "Failed to delete product", Toast.LENGTH_SHORT).show();
         });
     }
 

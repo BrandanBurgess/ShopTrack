@@ -40,6 +40,8 @@ public class CreateProductActivity extends AppCompatActivity {
     private ImageView productImage;
     private Uri imageUri;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +65,7 @@ public class CreateProductActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE);
         }
+
 
         addImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,6 +95,8 @@ public class CreateProductActivity extends AppCompatActivity {
                 uploadImageAndCreateProduct(name, price, description);
             }
         });
+
+
     }
 
     private void openFileChooser() {
@@ -101,6 +106,7 @@ public class CreateProductActivity extends AppCompatActivity {
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -109,6 +115,8 @@ public class CreateProductActivity extends AppCompatActivity {
             productImage.setImageURI(imageUri);
         }
     }
+
+
 
     private void uploadImageAndCreateProduct(final String name, final Double price, final String description) {
         if (imageUri != null) {
