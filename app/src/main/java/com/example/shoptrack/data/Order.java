@@ -1,6 +1,8 @@
 package com.example.shoptrack.data;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,11 +10,10 @@ import java.util.Map;
 public class Order {
     public List<OrderItem> orderItems;
 
-    //make orderItems a hashmap with storeID as key and orderItem as value
-
-    Map<String, OrderItem> orderItemMap = new HashMap<>();
-
+    public long timestamp;
     public String userID;
+
+    public String orderID;
 
 
     public Order() {
@@ -21,7 +22,6 @@ public class Order {
     public Order (List<OrderItem> order, String userID) {
         this.orderItems = order;
         this.userID = userID;
-        makeOrderItemsMap();
     }
 
     public List<OrderItem> getOrder() {
@@ -52,17 +52,6 @@ public class Order {
         return storeIDs;
         }
 
-
-    public void makeOrderItemsMap() {
-        for (OrderItem orderItem : orderItems) {
-            orderItemMap.put(orderItem.getStoreID(), orderItem);
-        }
-    }
-
-    public Map<String, OrderItem> getOrderItemsMap() {
-        return orderItemMap;
-    }
-
     public String makeOrderIds() {
         String orderIds = "";
         for (OrderItem orderItem : orderItems) {
@@ -71,7 +60,26 @@ public class Order {
         return orderIds;
     }
 
+    public String getOrderID() {
+        return orderID;
     }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
+    }
+
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public long getTimestamp() {
+        return timestamp;
+    }
+
+
+
+
+}
 
 
 

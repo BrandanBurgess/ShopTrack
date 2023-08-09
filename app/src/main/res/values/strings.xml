@@ -54,5 +54,9 @@
     <string name="Status">Status:</string>
     <string name="storeName">store_name</string>
     <string name="Quantity">0</string>
+    <string name="order_id">OrderID</string>
+    <string name="order_timestamp">01/02/2023</string>
+    <string name="hey_user">Hey User</string>
+
 
 </resources>

@@ -1,4 +1,6 @@
 package com.example.shoptrack.data;
+import android.util.Log;
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
@@ -21,12 +23,13 @@ public class OrderWriter {
 
         //write list of StoreIDs to the new order node
 //        newOrderRef.child("storeIDs").setValue(order.getStoreIDs());
-        newOrderRef.child("StoreIDs").setValue(order.makeOrderIds());
         newOrderRef.child("userID").setValue(order.getUserID());
         // Add a timestamp field using ServerValue.TIMESTAMP
+        long timestamp = ServerValue.TIMESTAMP.size();
         newOrderRef.child("timestamp").setValue(ServerValue.TIMESTAMP);
+        newOrderRef.child("orderID").setValue(orderId);
 
-
+        String userID = order.getUserID();
 
 
 
@@ -63,6 +66,20 @@ public class OrderWriter {
             DatabaseReference newStoreOrderRef = StoreOrder.child(orderItem.getStoreID());
             //write the orderItems from Order to the newStoreOrderRef
             newStoreOrderRef.child(orderItemId).setValue(orderItem);
+            //write the orderID to the newStoreOrderRef
+            Log.d("ORDERID", orderId);
+            newStoreOrderRef.child(orderItemId).child("orderID").setValue(orderId);
+            newStoreOrderRef.child(orderItemId).child("userID").setValue(UserReference.getInstance().getUserID());
+
+
+            OrderItemPlus orderItemPlus = new OrderItemPlus(orderItem,timestamp, orderId);
+            //UserOrder (within User)
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+            DatabaseReference userOrdersRef = userRef.child("userOrders");
+            //Create new key for the orderItem
+            DatabaseReference newUserOrderRef = userOrdersRef.child(orderItemId);
+            //Write the orderItemPlus from Order to the newUserOrderRef
+            newUserOrderRef.setValue(orderItemPlus);
 
         }
     }

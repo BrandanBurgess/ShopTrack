@@ -24,11 +24,15 @@ import com.example.shoptrack.data.OrderWriter;
 import com.example.shoptrack.data.StoreOrder;
 import com.example.shoptrack.data.UserReference;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.example.shoptrack.R;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.List;
 
 
 public class OwnerOrdersFragment extends Fragment {
@@ -106,23 +110,68 @@ public class OwnerOrdersFragment extends Fragment {
         fulfillbutton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                //go through all the orderItems in the adapter and set their completed value to true
-                DatabaseReference orderItemsRef =  FirebaseDatabase.getInstance().getReference().child("StoreOrders").child(storeID);
+                DatabaseReference orderItemsRef = FirebaseDatabase.getInstance().getReference().child("StoreOrders").child(storeID);
 
-                for(int i = 0; i < adapter.getItemCount(); i++){
+                for (int i = 0; i < adapter.getItemCount(); i++) {
                     OrderItem orderItem = adapter.getItem(i);
-                    if (orderItem != null){
-                        orderItem.completed = true;
-                        //get the key of the orderItem
+                    if (orderItem != null) {
+//                        orderItem.completed = true;
                         String key = adapter.getRef(i).getKey();
-                        //update the orderItem in the database
-                        orderItemsRef.child(key).setValue(orderItem);
-                        adapter.deleteItem(i);
+                        Log.d("KEY FOR ORDERITEM IN STOREORDERS", key);
 
+                        // Update the orderItem in StoreOrders
+                        orderItemsRef.child(key).child("completed").setValue(true);
+
+                        // Get the orderID of the orderItem from the database
+                        DatabaseReference userIDRef = orderItemsRef.child(key).child("userID");
+                        userIDRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                if (snapshot.exists()) {
+
+                                    String userID = snapshot.getValue(String.class);
+                                    Log.d("ORDERID", userID);
+
+                                    // Update the completed field for the corresponding orderItem in orders
+//                                    DatabaseReference orderRef = FirebaseDatabase.getInstance().getReference().child("orders").child(orderID).child("orderItems");
+                                    DatabaseReference newOrderRef  = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("userOrders");
+                                    newOrderRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            // go to each orderItem whos key is the same as the key of the orderItem in StoreOrders\
+                                            // and update the completed field to true
+                                            for (DataSnapshot orderItemSnapshot : snapshot.getChildren()) {
+                                                String orderItemKey = orderItemSnapshot.getKey();
+                                                Log.d("ORDERITEMKEY", orderItemKey);
+                                                if (orderItemKey.equals(key)) {
+                                                    newOrderRef.child(orderItemKey).child("completed").setValue(true);
+                                                }
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+
+                                        }
+                                    });
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                Log.d("TAG", databaseError.getMessage());
+                            }
+                        });
+
+                        adapter.deleteItem(i);
                     }
                 }
+
+                // Make a toast to let the user know that the order has been fulfilled
+                Toast.makeText(getContext(), "Orders fulfilled!", Toast.LENGTH_SHORT).show();
             }
         });
+
 
 
     }

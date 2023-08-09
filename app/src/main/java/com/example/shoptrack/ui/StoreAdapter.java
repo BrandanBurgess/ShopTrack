@@ -68,7 +68,7 @@ public class StoreAdapter extends FirebaseRecyclerAdapter <Store, StoreAdapter.s
         ImageView store_image;
         public storeViewholder(@NonNull View itemView){
             super(itemView);
-            store_name = itemView.findViewById(R.id.store_name);
+            store_name = itemView.findViewById(R.id.shopper_order_store);
             store_description = itemView.findViewById(R.id.store_description);
             store_image = itemView.findViewById(R.id.store_image);
 

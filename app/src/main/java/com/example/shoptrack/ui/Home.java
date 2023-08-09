@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.shoptrack.R;
 import com.example.shoptrack.data.Cart;
+import com.example.shoptrack.data.ShopperOrder;
 import com.example.shoptrack.data.UserReference;
 import com.example.shoptrack.databinding.ActivityHomeBinding;
 
@@ -34,22 +35,27 @@ public class Home extends AppCompatActivity {
 
             if(item.getItemId() == R.id.nav_home){
                 UserReference fireUser = UserReference.getInstance();
+                ShopperOrder sOrder = ShopperOrder.getInstance();
                 replaceFragment(new HomeFragment());
             }
             else if (item.getItemId() == R.id.nav_cart){
                 UserReference fireUser = UserReference.getInstance();
+                ShopperOrder sOrder = ShopperOrder.getInstance();
                 replaceFragment(new CartFragment());
             }
             else if (item.getItemId() == R.id.nav_account){
                 UserReference fireUser = UserReference.getInstance();
+                ShopperOrder sOrder = ShopperOrder.getInstance();
                 replaceFragment(new AccountFragment());
             }
             else if (item.getItemId() == R.id.nav_mystore){
                 UserReference fireUser = UserReference.getInstance();
+                ShopperOrder sOrder = ShopperOrder.getInstance();
                 replaceFragment(new StoreFragment());
             }
             else if (item.getItemId() == R.id.nav_settings){
                 UserReference fireUser = UserReference.getInstance();
+                ShopperOrder sOrder = ShopperOrder.getInstance();
                 replaceFragment(new SettingsFragment());
             }
             return true;

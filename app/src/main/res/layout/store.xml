@@ -22,7 +22,7 @@
         android:layout_height="73dp">
 
         <TextView
-            android:id="@+id/store_name"
+            android:id="@+id/shopper_order_store"
             android:layout_width="247dp"
             android:layout_height="20dp"
             android:layout_marginStart="16dp"
@@ -51,7 +51,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.289"
             app:layout_constraintStart_toEndOf="@+id/store_image"
-            app:layout_constraintTop_toBottomOf="@+id/store_name"
+            app:layout_constraintTop_toBottomOf="@+id/shopper_order_store"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView

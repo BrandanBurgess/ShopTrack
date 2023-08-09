@@ -88,5 +88,9 @@ public class UserReference {
         this.our_email = email;
     }
 
+    public String getOur_email() {
+        return our_email;
+    }
+
 
 }
