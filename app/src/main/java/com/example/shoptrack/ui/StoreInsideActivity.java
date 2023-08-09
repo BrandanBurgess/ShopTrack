@@ -66,12 +66,12 @@ public class StoreInsideActivity extends AppCompatActivity implements ProductAct
         });
     }
 
-    @Override
+ /*   @Override
     public void onEditProduct(Product product) {
         Intent intent = new Intent(this, CreateProductActivity.class);
         intent.putExtra("PRODUCT", product);  // Make sure your Product class implements Parcelable
         startActivity(intent);
-    }
+    }*/
 
     @Override
     public void onDeleteProduct(Product product) {
