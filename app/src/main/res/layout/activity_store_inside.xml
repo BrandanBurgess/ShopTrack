@@ -22,6 +22,7 @@
         android:textColor="@color/white"
         android:textSize="18sp" />
 
+
     <Button
         android:id="@+id/btn_edit_product"
         android:layout_width="match_parent"

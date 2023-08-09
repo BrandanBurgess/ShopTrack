@@ -1,14 +1,15 @@
 package com.example.shoptrack.data;
 
-public class Product {
+import android.os.Parcel;
+import android.os.Parcelable;
 
+public class Product implements Parcelable {
 
     public String name;
     public Double price;
     public String description;
     public String imageUrl;
     public String ownerId;
-
     public String productID;
 
     public Product() {
@@ -22,6 +23,51 @@ public class Product {
         this.ownerId = ownerId;
         this.productID = "";
     }
+
+    protected Product(Parcel in) {
+        name = in.readString();
+        if (in.readByte() == 0) {
+            price = null;
+        } else {
+            price = in.readDouble();
+        }
+        description = in.readString();
+        imageUrl = in.readString();
+        ownerId = in.readString();
+        productID = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        if (price == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(price);
+        }
+        dest.writeString(description);
+        dest.writeString(imageUrl);
+        dest.writeString(ownerId);
+        dest.writeString(productID);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     // getters
     public String getName() {
