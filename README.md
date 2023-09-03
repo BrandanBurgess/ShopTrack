@@ -6,24 +6,19 @@ ShopTrack is an Android native marketplace-inspired mobile app that allows users
 </br>
 
 ## Table of Contents
-- [The Approach](#the-approach)
 - [Functionality](#functionality)
+- [Scrum](#the-approach)
+- [Backend](#backend)
 - [Design](#design)
 - [Demo](#Demo)
-  
+
+</br>
 </br>
 
 
-</br>
 
-## The Approach
-After a brief session of brainstorming our team decided to focus on sustainability. From there we started researching and discussing about all the different niches for which we can possibly create an effective solution. Building upon that we came up with the idea for SustainU and went ahead with it because of how feasible yet impactful the concept can actually be. It requires a very minimal start up cost and little to no maintenance.<br>
-<br>
-The prototype of the app was built from scratch on Figma. Our team spent hours working on the designs, colors, fonts, and the overall UI experience. Although not yet fully polished, this prototype clearly demonstrates the workflow and UI of the app, while taking all the core concepts of design into consideration.<br>
-<br>
-The website is made to briefly describe our app and what it does, while providing a slideshow showing the basic working of the app. This website was built using HTML, CSS and a bit of JavaScript, and is really just for showing the world what SustainU is all about. We tackled with a lot of issues related to the layout and bugs during the development process, all of which were solved using research, discussions and critical thinking.
 
-</br>
+
 
 ## Functionality
 
@@ -32,27 +27,42 @@ The website is made to briefly describe our app and what it does, while providin
 - Users are able to see previews of the stores and products available
 - Create and/or delete products and stores if you are a store owner.
 
-
 </br>
+
+
+## Scrum
+Scrum was employed as an effective project management framework for the development of ShopTrack, an Android-native marketplace-inspired mobile app. With a clear focus on enhancing user experience and functionality, the team utilized Scrum principles to prioritize and streamline the project's development process. Ten user stories, five representing the needs of customers and five addressing the requirements of store owners, served as the cornerstone of our development efforts.
+<br>
+These user stories were broken down into manageable tasks and organized into short, time-bound iterations known as sprints. Daily stand-up meetings facilitated open communication within the team, enabling us to promptly address any roadblocks or adjustments needed to meet our goals. 
+<br>
+The iterative nature of Scrum allowed for flexibility and adaptability, ensuring that the app's features and functionalities aligned with evolving user expectations. By incorporating Scrum, ShopTrack was not only delivered on time but also provided a dynamic and responsive platform for both customers and store owners to engage with the mobile marketplace seamlessly.
+</br>
+
+## Backend
+
+Firebase served as the robust backbone of ShopTrack's backend infrastructure, effectively managing and storing crucial data for both customers and store owners. Leveraging Firebase Realtime Database, the app seamlessly stored and retrieved vital information, including vendor details, product listings, customer credentials, and order records. This real-time database offered the advantage of instant updates and synchronization, ensuring that all users had access to the most current data at all times. 
+<br>
+
+Firebase's authentication mechanisms bolstered the security of user credentials, safeguarding sensitive information. Furthermore, its scalability and reliability ensured that as ShopTrack grew, the backend infrastructure remained responsive and capable of handling increasing data loads. Firebase played an integral role in delivering a seamless and efficient experience for both customers and store owners, making ShopTrack a reliable and dynamic mobile marketplace platform.
 
 ## Design
 Initially, Figma was used to design the UI of the app for the Login/SignUp, Home, Cart, Orders, Store, and Settings pages.
 
-Welcome
+<h2>Welcome</h2>
 <p align="center">
 <img src="images/Welcome.png" align="left" height=20% width=20% alt="Start Page"> 
 <img src="images/Login.png" height=40% width=20% alt="Login Page"> 
 <img src="images/SignUp.png" align="right" height=40% width=20% alt="SignUp">
 </p>
 
-Main Functionality Pages
+<h2>Main Functionality Pages</h2>
 <p align="center">
 <img src="images/Home.png" align="left" height=40% width=20% alt="Home Page"> 
 <img src="images/Cart.png" height=40% width=20% alt="Cart Page"> 
 <img src="images/Orders.png" align="right" height=40% width=20% alt="Order Page">
 </p>
 
-Store Owner Pages
+<h2>Store Owner Pages</h2>
 <p align="center">
 <img src="images/MyStore1.png" align="left" height=40% width=20% alt="MyStore"> 
 <img src="images/MyOrdersOwner.png" height=40% width=20% alt="Owner Orders"> 
