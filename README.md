@@ -1,5 +1,6 @@
 # ShopTrack
 
+## Overview
 ShopTrack is an Android native marketplace-inspired mobile app that allows users to purchase from one another, create stores, upload products, and track their orders. This app is a project for a Software Design course.
 
 </br>
@@ -12,13 +13,6 @@ ShopTrack is an Android native marketplace-inspired mobile app that allows users
   
 </br>
 
-## Inspiration
-My inspiration is Chris Yan
-
-</br>
-
-## Goal
-Krit Grover
 
 </br>
 
@@ -45,16 +39,18 @@ The website is made to briefly describe our app and what it does, while providin
 Initially, Figma was used to design the UI of the app for the Login/SignUp, Home, Cart, Orders, Store, and Settings pages.
 
 Welcome
-</br>
+<p align="center">
+<img src="images/Welcome.png" align="left" width=28% alt="Start Page"> <img src="images/Login.png" width=28% alt="Login Page"> <img src="images/SignUp.png" align="right" width=28% alt="SignUp">
+</p>
 
+Main Functionality Pages
 <p align="center">
-<img src="images/Home.png" align="left" width=28% alt="Start Page"> <img src="images/Login.png" width=28% alt="Login Page"> <img src="images/SignUp.png" align="right" width=28% alt="SignUp">
+<img src="images/Home.png" align="left" width=28% alt="Home Page"> <img src="images/Cart.png" width=28% alt="Cart Page"> <img src="images/Orders.png" align="right" width=28% alt="Order Page">
 </p>
+
+Store Owner Pages
 <p align="center">
-<img src="images/s1.jpg" align="left" width=28% alt="Start Page"> <img src="images/Home.jpg" width=28% alt="Home Page"> <img src="images/leaderboard.jpg" align="right" width=28% alt="Leaderboard">
-</p>
-<p align="center">
-<img src="images/s1.jpg" align="left" width=28% alt="Start Page"> <img src="images/Home.jpg" width=28% alt="Home Page"> <img src="images/leaderboard.jpg" align="right" width=28% alt="Leaderboard">
+<img src="images/MyStore1.png" align="left" width=28% alt="MyStore"> <img src="images/MyOrdersOwner.png" width=28% alt="Owner Orders"> <img src="images/ProductManagement.png" align="right" width=28% alt="Product Management">
 </p>
 
 </br>
