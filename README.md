@@ -43,17 +43,16 @@ The website is made to briefly describe our app and what it does, while providin
 
 ## Design
 Initially, Figma was used to design the UI of the app for the Login/SignUp, Home, Cart, Orders, Store, and Settings pages.
-![Welcome](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/ab3e81e4-d3f6-4ab0-86cc-2105507a60b5)
-![SignUp](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/20085229-d3ff-4be9-a9ee-8a4811bb2653)
-![Settings](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/08100bfa-6d43-4fce-8e4a-0441c2d6cee5)
-![ProductManagement](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/0c344494-9b71-4a67-9583-2f0f401dd02d)
-![Orders](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/0210a10d-6292-4355-ada5-181956535c66)
-![MyStore1](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/5b4ae104-0cb9-4875-a6b8-35be28603a5b)
-![MyOrdersOwner](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/419b94b6-601b-4f12-bd9c-105b0461f3c0)
-![Login](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/8cbb15d3-974c-48b1-b7c5-cdc615db5c2f)
-![Home](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/b5e6ad2b-0dee-4503-a692-15e62786a45e)
-![Cart](https://github.com/BrandanBurgess/ShopTrack/assets/133079825/9a357587-e1ce-449e-b1e0-ff1c89867b58)
 
+Welcome
+</br>
+
+<p align="center">
+<img src="images/Home.jpg" align="left" width=28% alt="Start Page"> <img src="images/Login.jpg" width=28% alt="Login Page"> <img src="images/SignUp.jpg" align="right" width=28% alt="SignUp">
+</p>
+<p align="center">
+<img src="images/s1.jpg" align="left" width=28% alt="Start Page"> <img src="images/Home.jpg" width=28% alt="Home Page"> <img src="images/leaderboard.jpg" align="right" width=28% alt="Leaderboard">
+</p>
 <p align="center">
 <img src="images/s1.jpg" align="left" width=28% alt="Start Page"> <img src="images/Home.jpg" width=28% alt="Home Page"> <img src="images/leaderboard.jpg" align="right" width=28% alt="Leaderboard">
 </p>
