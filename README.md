@@ -40,7 +40,7 @@ Initially, Figma was used to design the UI of the app for the Login/SignUp, Home
 
 Welcome
 <p align="center">
-<img src="images/Welcome.png" align="left" height=50% width=28% alt="Start Page"> <img src="images/Login.png" height=50% width=28% alt="Login Page"> <img src="images/SignUp.png" align="right" height=50% width=28% alt="SignUp">
+<img src="images/Welcome.png" align="left" height=28% width=28% alt="Start Page"> <img src="images/Login.png" height=50% width=28% alt="Login Page"> <img src="images/SignUp.png" align="right" height=50% width=28% alt="SignUp">
 </p>
 
 Main Functionality Pages
@@ -56,7 +56,7 @@ Store Owner Pages
 </br>
 
 ## Demo
-Below is an example of creating a new store as a vendor, ordering from that store as a user and fulfilling the order from the vendor side. <br>
+Below is an example of creating a new store as a vendor, ordering from that store as a user and fulfilling the order from the vendor side. Users are able to order from multiple stores without placing order tracking functionality at risk. <br>
 <br>
 
 https://github.com/BrandanBurgess/ShopTrack/assets/133079825/f8ff9c95-fb6e-48d0-9ea7-4b6ee92138b1
