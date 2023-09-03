@@ -48,7 +48,7 @@ Welcome
 </br>
 
 <p align="center">
-<img src="images/Home.jpg" align="left" width=28% alt="Start Page"> <img src="images/Login.jpg" width=28% alt="Login Page"> <img src="images/SignUp.jpg" align="right" width=28% alt="SignUp">
+<img src="images/Home.png" align="left" width=28% alt="Start Page"> <img src="images/Login.png" width=28% alt="Login Page"> <img src="images/SignUp.png" align="right" width=28% alt="SignUp">
 </p>
 <p align="center">
 <img src="images/s1.jpg" align="left" width=28% alt="Start Page"> <img src="images/Home.jpg" width=28% alt="Home Page"> <img src="images/leaderboard.jpg" align="right" width=28% alt="Leaderboard">
