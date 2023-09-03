@@ -5,15 +5,10 @@ ShopTrack is a marketplace-inspired e-commerce app that allows users to purchase
 </br>
 
 ## Table of Contents
-- [Inspiration](#inspiration)
-- [Goal](#goal)
 - [The Approach](#the-approach)
 - [Functionality](#functionality)
-  - [Basic Working](#basic-working)
-  - [Earning and Using Points](#earning-points)
-  - [Gamification](#gamification)
-- [Design and Prototype](#design-and-prototype)
-- [Future Steps](#future-steps)
+- [Design](#design)
+- [Demo](#Demo)
   
 </br>
 
@@ -67,10 +62,12 @@ Over the course of the last 24hrs, we built a design prototype of what the app w
 
 </br>
 
-## Future Steps
+## Demo
 As the cost of gas continues to fluctuate individuals are turning to use public transit. But, shouldn't they be rewarded for choosing this service and leaving a lower individual carbon footprint? <br>
 <br>
-We at SustainU think they do and thus we wish to open our app to the public and promote environmental sustainability with users across the GTA. An ambitious idea such as this would require cooperation and partnerships with both the private and public sectors. For example, a proposed idea is to have points gained through frequent use of public transport. In order to keep track of when a user uses a public transit service we'd have to partner up with PRESTO in order to link the transactions with the points system of SustainU. Another proposed idea is to partner up with the Municipal Governments in allowing points to be gained through the use of CityBikes. Furthermore, environmentally sustainable small businesses that wish to increase their brand exposure can partner with SustainU and provide offers and discounts on their products. 
-Through SustainU individuals can finally be rewarded by being green. 
+
+https://github.com/BrandanBurgess/ShopTrack/assets/133079825/f8ff9c95-fb6e-48d0-9ea7-4b6ee92138b1
+
+
 
 </br>
