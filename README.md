@@ -1,6 +1,6 @@
 # ShopTrack
 
-Prototype E-Commerce App.
+ShopTrack is a marketplace-inspired e-commerce app that allows users to purchase from one another, create stores, upload products, and track their orders. This app is a project for a Software Design course.
 
 </br>
 
@@ -38,11 +38,9 @@ The website is made to briefly describe our app and what it does, while providin
 
 ## Functionality
 ### Basic Working:
-- Download the SustainU app.
-- Students are asked to Login or Sign Up with their UTORid.
-- Scan the QR code from the app after performing said activities to earn points.
-- Accumulate points and rise up the leaderboard.
-- Redeem/Donate points whenever you want!
+- Download the ShopTrack app
+- Users are asked to Login or Sign Up with their email and choose between being a vendor or seller
+- Create and/or Con
 
 ### Earning Points:
 - Water dispensing station where you can use reusable water bottle and scan for points.
