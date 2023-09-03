@@ -40,18 +40,25 @@ Initially, Figma was used to design the UI of the app for the Login/SignUp, Home
 
 Welcome
 <p align="center">
-<img src="images/Welcome.png" align="left" height=28% width=28% alt="Start Page"> <img src="images/Login.png" height=50% width=28% alt="Login Page"> <img src="images/SignUp.png" align="right" height=50% width=28% alt="SignUp">
+<img src="images/Welcome.png" align="left" height=20% width=20% alt="Start Page"> 
+<img src="images/Login.png" height=40% width=20% alt="Login Page"> 
+<img src="images/SignUp.png" align="right" height=40% width=20% alt="SignUp">
 </p>
 
 Main Functionality Pages
 <p align="center">
-<img src="images/Home.png" align="left" height=50% width=28% alt="Home Page"> <img src="images/Cart.png" height=50% width=28% alt="Cart Page"> <img src="images/Orders.png" align="right" height=50% width=28% alt="Order Page">
+<img src="images/Home.png" align="left" height=40% width=20% alt="Home Page"> 
+<img src="images/Cart.png" height=40% width=20% alt="Cart Page"> 
+<img src="images/Orders.png" align="right" height=40% width=20% alt="Order Page">
 </p>
 
 Store Owner Pages
 <p align="center">
-<img src="images/MyStore1.png" align="left" height=50% width=28% alt="MyStore"> <img src="images/MyOrdersOwner.png" height=50% width=28% alt="Owner Orders"> <img src="images/ProductManagement.png" align="right" height=50% width=28% alt="Product Management">
+<img src="images/MyStore1.png" align="left" height=40% width=20% alt="MyStore"> 
+<img src="images/MyOrdersOwner.png" height=40% width=20% alt="Owner Orders"> 
+<img src="images/ProductManagement.png" align="right" height=40% width=20% alt="Product Management">
 </p>
+
 
 </br>
 
