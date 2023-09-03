@@ -32,9 +32,11 @@ ShopTrack is an Android native marketplace-inspired mobile app that allows users
 
 ## Scrum
 Scrum was employed as an effective project management framework for the development of ShopTrack, an Android-native marketplace-inspired mobile app. With a clear focus on enhancing user experience and functionality, the team utilized Scrum principles to prioritize and streamline the project's development process. Ten user stories, five representing the needs of customers and five addressing the requirements of store owners, served as the cornerstone of our development efforts.
+
 <br>
 These user stories were broken down into manageable tasks and organized into short, time-bound iterations known as sprints. Daily stand-up meetings facilitated open communication within the team, enabling us to promptly address any roadblocks or adjustments needed to meet our goals. 
 <br>
+
 The iterative nature of Scrum allowed for flexibility and adaptability, ensuring that the app's features and functionalities aligned with evolving user expectations. By incorporating Scrum, ShopTrack was not only delivered on time but also provided a dynamic and responsive platform for both customers and store owners to engage with the mobile marketplace seamlessly.
 </br>
 
