@@ -7,7 +7,7 @@ ShopTrack is an Android native marketplace-inspired mobile app that allows users
 
 ## Table of Contents
 - [Functionality](#functionality)
-- [Scrum](#srum)
+- [Scrum](#scrum)
 - [Backend](#backend)
 - [Design](#design)
 - [Demo](#Demo)
